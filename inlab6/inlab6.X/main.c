@@ -48,7 +48,7 @@ uint8_t checksum;
 //----------------------------------------------
 
 void main(void) {
-
+//comment
 	uint8_t i;
 	char cmd;
 	char letter;
