@@ -41,7 +41,7 @@ uint8_t ind = 0;
 uint8_t cksum;
 uint8_t checksum;
 
-
+//ladadadadada
 
 //----------------------------------------------
 // Main "function"
