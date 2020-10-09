@@ -32,7 +32,7 @@ void myTMR1ISR(void);
 char transmitIRBuffer[MAX_BUFFER_SIZE];
 uint8_t transmitStart = false;
 uint8_t transmitBusy = false;
-uint16_t bitPeriodInTMR1Counts = 13333; // 1200 Baud default
+uint16_t bitPeriodInTMR1Counts = 13333;        // 1200 Baud default
 
 void myEUSART2ISR(void);
 char recieveIRBuffer[MAX_BUFFER_SIZE];
@@ -95,10 +95,14 @@ void main(void) {
                     printf("o: k\r\n");
                     printf("Z: Reset processor\r\n");
                     printf("z: Clear the terminal\r\n");
-                    printf("S: Send ""%c"" using IR transmitter\r\n", letter);
-                    printf("R: use EUSART2 to decode character\r\n");
-                    printf("r: reset EUSART2\r\n");
-                    printf("p/P: decrease/increase PWM period by 1us\r\n");
+                    printf("b: set Baud rate\r\n");
+                    printf("m: create a NULL terminated message with SRC and DEST prefix.\r\n");
+                    printf("s: set source transmit identity\r\n");
+                    printf("d: set Destination transmit target\r\n");
+                    printf("S: Send message using TMR1 ISR\r\n");
+                    printf("R: Receive message using EUSART2 via IR decoder\r\n");
+                    printf("M: Monitor all IR traffic.\r\n");
+                    printf("x/R: decode tx/RX message.\r\n");
                     printf("-------------------------------------------------\r\n");
                     break;
 
@@ -125,9 +129,75 @@ void main(void) {
                     break;
 
                     //--------------------------------------------
-                    // Transmit letter through ECCP2 IR transmitter   
-                    // Determine start-up and shut-down times  IR pulse -> IR decoder
-                    // Determine fastest transmission rate to get good characters
+                    // Set Baud rate
+                    //--------------------------------------------    
+                case 'b':
+                    break;
+                    
+                    //--------------------------------------------
+                    // create a NULL terminated message with SRC and DEST prefix
+                    //-------------------------------------------- 
+                case 'm':
+                    {
+                    uint8_t ind = 0, cksum = 0;
+                    printf("Enter a message, hit return when done.\r\n");
+                    printf(">");
+                    
+                    //Gets user message and creates cksum
+                    while (EUSART1_DataReady);
+                    for (ind = 2; ind < ((MAX_BUFFER_SIZE - 2)); ind++) {
+                        transmitIRBuffer[ind] = EUSART1_Read();
+                        cksum += transmitIRBuffer[ind];
+                        printf("%c", transmitIRBuffer[ind]);
+                        if (transmitIRBuffer[ind] == '\r') {
+                            cksum -= '\r';
+                            printf("\r\n");
+                            break;
+                        }
+                    }
+                    transmitIRBuffer[ind + 1] = '\0';
+                    transmitIRBuffer[ind + 2] = cksum;
+                   
+                    //NOTE: Destination and source addresses are changed in d and s
+                    
+                    //Output results - Message, cksum, SRC, DES
+                    ind = 2;
+                    printf("\tMessage: ");
+                    for(;;) {
+                        if (transmitIRBuffer[ind] == '\0'){
+                            printf("\r\n");
+                            ind++;
+                            break;
+                        }
+                        printf("%c", transmitIRBuffer[ind]);
+                        ind++;
+                    }
+                    printf("\tchecksum: %d\r\n", transmitIRBuffer[ind]);
+                    printf("\tSRC: %d\r\n", transmitIRBuffer[0]);
+                    printf("\tDES: %d\r\n", transmitIRBuffer[1]);
+                    break;
+                }
+                    
+                    //--------------------------------------------
+                    // set Source transmit identity
+                    //--------------------------------------------
+                case 's':
+                    printf("Enter source address: ");
+                    transmitIRBuffer[0] = userEnter8bit();
+                    printf("SRC: %d", transmitIRBuffer[0]);
+                    break;
+                    
+                    //--------------------------------------------
+                    // set Destination transmit target
+                    //--------------------------------------------
+                case 'd':
+                    printf("Enter destination address: ");
+                    transmitIRBuffer[1] = userEnter8bit();
+                    printf("DES: %d", transmitIRBuffer[0]);
+                    break;
+                    
+                    //--------------------------------------------
+                    // Send message using TMR1 ISR
                     //--------------------------------------------  
                 case 'S':
                     // Preface character with a '0' bit
@@ -137,7 +207,7 @@ void main(void) {
                     break;
 
                     //--------------------------------------------
-                    // Read the a character from EUSART2 FIFO
+                    // Receive message using EUSART2
                     //--------------------------------------------
                 case 'R':
                     if (PIR3bits.RC2IF == 1)
@@ -147,6 +217,17 @@ void main(void) {
                     break;
 
                     //--------------------------------------------
+                    // Decode tx/RX message
+                    //--------------------------------------------                
+                case 'X':
+                case 'x':
+                    if (cmd == 'X'); 
+                    if (cmd == 'x');
+                    
+                    break;
+
+                    
+                    //--------------------------------------------
                     // reset EUSART2 in case it needs doing
                     //--------------------------------------------                
                 case 'r':
@@ -155,16 +236,7 @@ void main(void) {
                     printf("Just reset EUSART2\r\n");
                     break;
 
-                    //--------------------------------------------
-                    // Change the period of the PWM and as a consequence the frequency
-                    //--------------------------------------------                
-                case 'p':
-                case 'P':
-                    if (cmd == 'p') PR2 -= 4;
-                    if (cmd == 'P') PR2 += 4;
-                    printf("Period = %d\r\n", PR2);
-                    break;
-
+                    
                     //--------------------------------------------
                     // If something unknown is hit, tell user
                     //--------------------------------------------
@@ -230,4 +302,32 @@ void myTMR1ISR(void) {
 
     TMR1_WriteTimer(0x10000 - 6666); // 6666 = 2400 Baud
     PIR1bits.TMR1IF = 0;
+}
+
+//Gets input for three digit number
+//I'm assuming for now you need to enter leading zeroes
+//Function also doesn't check inputs
+uint8_t userEnter8bit() {
+    uint8_t num = 0;
+    for(uint8_t i = 0; i < 3; ++i) {
+        while(!EUSART1_DataReady);
+        char cmd = EUSART1_Read();
+        if (cmd == '\r') break;
+       
+        printf("%c", cmd);
+        uint8_t digit = cmd - 48;
+        switch(i){
+            case 0:
+                num = num + (digit * 10 * 10);
+                break;
+            case 1:
+                num = num + (digit * 10);
+                break;
+            case 2:
+                num = num + digit;
+                break;
+        }
+    }
+    printf("\r\n");
+    return num;
 }

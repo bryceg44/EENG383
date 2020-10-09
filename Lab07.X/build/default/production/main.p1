@@ -67,7 +67,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "12506 C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\pic\include\proc\pic18f26k22.h
 [; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\pic\include\proc\pic18f26k22.h: 12506: extern volatile unsigned char PR2 __attribute__((address(0xFBB)));
 [v _PR2 `Vuc ~T0 @X0 0 e@4027 ]
-"9222
+"28 main.c
+[; ;main.c: 28:     char cmd;
+[v _userEnter8bit `(uc ~T0 @X0 0 ef ]
+"9222 C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\pic\include\proc\pic18f26k22.h
 [; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\pic\include\proc\pic18f26k22.h: 9222:     struct {
 [s S438 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S438 . TMR1GIF TMR3GIF TMR5GIF CTMUIF TX2IF RC2IF BCL2IF SSP2IF ]
@@ -109,10 +112,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "4489
 [; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\pic\include\proc\pic18f26k22.h: 4489: extern volatile RCSTA2bits_t RCSTA2bits __attribute__((address(0xF71)));
 [v _RCSTA2bits `VS213 ~T0 @X0 0 e@3953 ]
-"189 main.c
-[; ;main.c: 189:                     newCharacterToSend = 0;
-[c E6187 0 1 .. ]
-[n E6187 . TX_IDLE TX_DATA_BITS  ]
+"258 main.c
+[; ;main.c: 258:                     newCharacterToSend = 0;
+[c E6189 0 1 .. ]
+[n E6189 . TX_IDLE TX_DATA_BITS  ]
 "54 C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\pic\include\proc\pic18f26k22.h
 [; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\pic\include\proc\pic18f26k22.h: 54: __asm("ANSELA equ 0F38h");
 [; <" ANSELA equ 0F38h ;# ">
@@ -957,212 +960,373 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 73:                     printf("z: Clear the terminal\r\n");
 [e ( _printf :s 1C ]
 "74
-[; ;main.c: 74:                     printf("S: Send ""%c"" using IR transmitter\r\n", letter);
+[; ;main.c: 74:                     printf("b: set Baud rate\r\n");
 [e ( _printf :s 2C ]
 "75
-[; ;main.c: 75:                     printf("R: use EUSART2 to decode character\r\n");
+[; ;main.c: 75:                     printf("m: create a NULL terminated message with SRC and DEST prefix.\r\n");
 [e ( _printf :s 3C ]
 "76
-[; ;main.c: 76:                     printf("r: reset EUSART2\r\n");
+[; ;main.c: 76:                     printf("s: set source transmit identity\r\n");
 [e ( _printf :s 4C ]
 "77
-[; ;main.c: 77:                     printf("p/P: decrease/increase PWM period by 1us\r\n");
+[; ;main.c: 77:                     printf("d: set Destination transmit target\r\n");
 [e ( _printf :s 5C ]
 "78
-[; ;main.c: 78:                     printf("-------------------------------------------------\r\n");
+[; ;main.c: 78:                     printf("S: Send message using TMR1 ISR\r\n");
 [e ( _printf :s 6C ]
 "80
-[; ;main.c: 80: 
+[; ;main.c: 80:                     printf("M: Monitor all IR traffic.\r\n");
 {
 [e :U 841 ]
 {
 "82
-[; ;main.c: 82: 
+[; ;main.c: 82:                     printf("-------------------------------------------------\r\n");
 [e $ ! != -> ( _EUSART1_is_rx_ready ..  `i -> 0 `i 844  ]
 {
 "83
-[; ;main.c: 83: 
+[; ;main.c: 83:                     break;
 [e = _cmd -> ( _EUSART1_Read ..  `uc ]
 "84
-[; ;main.c: 84:                 case 'o':
+[; ;main.c: 84: 
 [e $U 846  ]
 {
 "89
-[; ;main.c: 89: 
+[; ;main.c: 89:                     printf("o:	ok\r\n");
 [e :U 847 ]
 "90
-[; ;main.c: 90: 
+[; ;main.c: 90:                     break;
 [e ( _printf :s 7C ]
 "91
-[; ;main.c: 91:                 case 'Z':
+[; ;main.c: 91: 
 [e ( _printf :s 8C ]
 "92
-[; ;main.c: 92:                     for (i = 0; i < 40; i++) printf("\n");
+[; ;main.c: 92: 
 [e ( _printf , (. :s 9C -> _PR2 `i ]
 "93
-[; ;main.c: 93:                     __asm("reset");
+[; ;main.c: 93: 
 [e ( _printf :s 10C ]
 "94
-[; ;main.c: 94:                     break;
+[; ;main.c: 94: 
 [e ( _printf :s 11C ]
 "95
-[; ;main.c: 95: 
+[; ;main.c: 95:                 case 'Z':
 [e ( _printf :s 12C ]
 "96
-[; ;main.c: 96: 
+[; ;main.c: 96:                     for (i = 0; i < 40; i++) printf("\n");
 [e ( _printf :s 13C ]
 "97
-[; ;main.c: 97: 
+[; ;main.c: 97:                     __asm("reset");
 [e ( _printf :s 14C ]
 "98
-[; ;main.c: 98: 
-[e ( _printf , (. :s 15C -> _letter `i ]
+[; ;main.c: 98:                     break;
+[e ( _printf :s 15C ]
 "99
-[; ;main.c: 99:                 case 'z':
+[; ;main.c: 99: 
 [e ( _printf :s 16C ]
 "100
-[; ;main.c: 100:                     for (i = 0; i < 40; i++) printf("\n");
+[; ;main.c: 100: 
 [e ( _printf :s 17C ]
 "101
-[; ;main.c: 101:                     break;
+[; ;main.c: 101: 
 [e ( _printf :s 18C ]
 "102
 [; ;main.c: 102: 
 [e ( _printf :s 19C ]
 "103
-[; ;main.c: 103: 
-[e $U 845  ]
-"108
-[; ;main.c: 108:                 case 'S':
-[e :U 848 ]
-"109
-[; ;main.c: 109: 
+[; ;main.c: 103:                 case 'z':
 [e ( _printf :s 20C ]
-"110
-[; ;main.c: 110:                     newCharacterToSend = 1;
+"104
+[; ;main.c: 104:                     for (i = 0; i < 40; i++) printf("\n");
+[e ( _printf :s 21C ]
+"105
+[; ;main.c: 105:                     break;
+[e ( _printf :s 22C ]
+"106
+[; ;main.c: 106: 
+[e ( _printf :s 23C ]
+"107
+[; ;main.c: 107: 
 [e $U 845  ]
-"115
-[; ;main.c: 115: 
+"112
+[; ;main.c: 112: 
+[e :U 848 ]
+"113
+[; ;main.c: 113: 
+[e ( _printf :s 24C ]
+"114
+[; ;main.c: 114: 
+[e $U 845  ]
+"119
+[; ;main.c: 119:                     printf("Enter a message, hit return when done.\r\n");
 [e :U 849 ]
-"116
-[; ;main.c: 116: 
+"120
+[; ;main.c: 120:                     printf(">");
 {
 [e = _i -> -> 0 `i `uc ]
 [e $ < -> _i `i -> 40 `i 850  ]
 [e $U 851  ]
 [e :U 850 ]
-[e ( _printf :s 21C ]
+[e ( _printf :s 25C ]
 [e ++ _i -> -> 1 `i `uc ]
 [e $ < -> _i `i -> 40 `i 850  ]
 [e :U 851 ]
 }
-"117
-[; ;main.c: 117: 
+"121
+[; ;main.c: 121: 
 [; <" reset ;# ">
-"118
-[; ;main.c: 118:                 case 'R':
+"122
+[; ;main.c: 122: 
 [e $U 845  ]
-"123
-[; ;main.c: 123:                     break;
+"127
+[; ;main.c: 127:                         printf("%c", transmitIRBuffer[ind]);
 [e :U 853 ]
-"124
-[; ;main.c: 124: 
+"128
+[; ;main.c: 128:                         if (transmitIRBuffer[ind] == '\r') {
 {
 [e = _i -> -> 0 `i `uc ]
 [e $ < -> _i `i -> 40 `i 854  ]
 [e $U 855  ]
 [e :U 854 ]
-[e ( _printf :s 22C ]
+[e ( _printf :s 26C ]
 [e ++ _i -> -> 1 `i `uc ]
 [e $ < -> _i `i -> 40 `i 854  ]
 [e :U 855 ]
 }
-"125
-[; ;main.c: 125: 
+"129
+[; ;main.c: 129:                             cksum -= '\r';
 [e $U 845  ]
-"132
-[; ;main.c: 132:                     break;
-[e :U 857 ]
 "134
-[; ;main.c: 134: 
-[e = _newCharacterToSend -> -> 1 `i `uc ]
+[; ;main.c: 134:                     transmitIRBuffer[ind + 1] = '\0';
+[e :U 857 ]
 "135
-[; ;main.c: 135: 
-[e ( _printf , , (. :s 23C -> _letter `i -> _letter `i ]
-"136
-[; ;main.c: 136: 
-[e =+ _letter -> -> 1 `i `uc ]
-"137
-[; ;main.c: 137:                 case 'p':
+[; ;main.c: 135:                     transmitIRBuffer[ind + 2] = cksum;
 [e $U 845  ]
-"142
-[; ;main.c: 142:                     break;
+"140
+[; ;main.c: 140:                     ind = 2;
 [e :U 858 ]
+"141
+[; ;main.c: 141:                     printf("\tMessage: ");
+{
+"142
+[; ;main.c: 142:                     for(;;) {
+[v _ind `uc ~T0 @X0 1 a ]
+[e = _ind -> -> 0 `i `uc ]
+[v _cksum `uc ~T0 @X0 1 a ]
+[e = _cksum -> -> 0 `i `uc ]
 "143
-[; ;main.c: 143: 
-[e $ ! == -> . . _PIR3bits 0 5 `i -> 1 `i 859  ]
+[; ;main.c: 143:                         if (transmitIRBuffer[ind] == '\0'){
+[e ( _printf :s 27C ]
 "144
-[; ;main.c: 144: 
-[e ( _printf , (. :s 24C -> ( _EUSART2_Read ..  `i ]
-[e $U 860  ]
-"145
-[; ;main.c: 145: 
-[e :U 859 ]
-"146
-[; ;main.c: 146: 
-[e ( _printf :s 25C ]
-[e :U 860 ]
+[; ;main.c: 144:                             printf("\r\n");
+[e ( _printf :s 28C ]
 "147
-[; ;main.c: 147:                 default:
-[e $U 845  ]
-"152
-[; ;main.c: 152:         }
+[; ;main.c: 147:                         }
+[e $U 859  ]
+[e :U 860 ]
+[e :U 859 ]
+[e $ != -> ( _EUSART1_is_rx_ready ..  `i -> 0 `i 860  ]
 [e :U 861 ]
-"153
-[; ;main.c: 153:     }
-[e = . . _RCSTA2bits 0 4 -> -> 0 `i `uc ]
-"154
-[; ;main.c: 154: }
-[e = . . _RCSTA2bits 0 4 -> -> 1 `i `uc ]
-"155
-[; ;main.c: 155: 
-[e ( _printf :s 26C ]
-"156
-[; ;main.c: 156: typedef enum {
-[e $U 845  ]
-"161
-[; ;main.c: 161: 
+"148
+[; ;main.c: 148:                         printf("%c", transmitIRBuffer[ind]);
+{
+[e = _ind -> -> 2 `i `uc ]
+[e $ < -> _ind `i - -> 32 `i -> 2 `i 862  ]
+[e $U 863  ]
 [e :U 862 ]
-"162
-[; ;main.c: 162: 
-[e :U 863 ]
-"163
-[; ;main.c: 163: void myTMR1ISR(void) {
-[e $ ! == -> _cmd `ui -> 112 `ui 864  ]
-[e =- _PR2 -> -> 4 `i `Vuc ]
-[e :U 864 ]
-"164
-[; ;main.c: 164: 
-[e $ ! == -> _cmd `ui -> 80 `ui 865  ]
-[e =+ _PR2 -> -> 4 `i `Vuc ]
+{
+"149
+[; ;main.c: 149:                         ind++;
+[e = *U + &U _transmitIRBuffer * -> _ind `ux -> -> # *U &U _transmitIRBuffer `ui `ux -> ( _EUSART1_Read ..  `uc ]
+"150
+[; ;main.c: 150:                     }
+[e =+ _cksum -> *U + &U _transmitIRBuffer * -> _ind `ux -> -> # *U &U _transmitIRBuffer `ui `ux `uc ]
+"151
+[; ;main.c: 151:                     printf("\tchecksum: %d\r\n", transmitIRBuffer[ind]);
+[e ( _printf , (. :s 29C -> *U + &U _transmitIRBuffer * -> _ind `ux -> -> # *U &U _transmitIRBuffer `ui `ux `i ]
+"152
+[; ;main.c: 152:                     printf("\tSRC: %d\r\n", transmitIRBuffer[0]);
+[e $ ! == -> *U + &U _transmitIRBuffer * -> _ind `ux -> -> # *U &U _transmitIRBuffer `ui `ux `ui -> 13 `ui 865  ]
+{
+"153
+[; ;main.c: 153:                     printf("\tDES: %d\r\n", transmitIRBuffer[1]);
+[e =- _cksum -> -> 13 `ui `uc ]
+"154
+[; ;main.c: 154:                     break;
+[e ( _printf :s 30C ]
+"155
+[; ;main.c: 155:                 }
+[e $U 863  ]
+"156
+[; ;main.c: 156: 
+}
 [e :U 865 ]
+"157
+[; ;main.c: 157: 
+}
+[e ++ _ind -> -> 1 `i `uc ]
+[e $ < -> _ind `i - -> 32 `i -> 2 `i 862  ]
+[e :U 863 ]
+}
+"158
+[; ;main.c: 158: 
+[e = *U + &U _transmitIRBuffer * -> -> + -> _ind `i -> 1 `i `ui `ux -> -> # *U &U _transmitIRBuffer `ui `ux -> -> 0 `ui `uc ]
+"159
+[; ;main.c: 159: 
+[e = *U + &U _transmitIRBuffer * -> -> + -> _ind `i -> 2 `i `ui `ux -> -> # *U &U _transmitIRBuffer `ui `ux -> _cksum `uc ]
+"164
+[; ;main.c: 164:                     break;
+[e = _ind -> -> 2 `i `uc ]
 "165
-[; ;main.c: 165:     static myTXstates_t tmr1ISRstate = TX_IDLE;
-[e ( _printf , (. :s 27C -> _PR2 `i ]
+[; ;main.c: 165: 
+[e ( _printf :s 31C ]
 "166
-[; ;main.c: 166:     static uint8_t mask = 0b00000001;
-[e $U 845  ]
+[; ;main.c: 166: 
+{
+[e :U 866 ]
+{
+"167
+[; ;main.c: 167: 
+[e $ ! == -> *U + &U _transmitIRBuffer * -> _ind `ux -> -> # *U &U _transmitIRBuffer `ui `ux `ui -> 0 `ui 869  ]
+{
+"168
+[; ;main.c: 168: 
+[e ( _printf :s 32C ]
+"169
+[; ;main.c: 169:                 case 'd':
+[e ++ _ind -> -> 1 `i `uc ]
+"170
+[; ;main.c: 170:                     break;
+[e $U 867  ]
 "171
 [; ;main.c: 171: 
-[e :U 866 ]
+}
+[e :U 869 ]
 "172
 [; ;main.c: 172: 
-[e ( _printf , (. :s 28C -> _cmd `i ]
+[e ( _printf , (. :s 33C -> *U + &U _transmitIRBuffer * -> _ind `ux -> -> # *U &U _transmitIRBuffer `ui `ux `i ]
 "173
 [; ;main.c: 173: 
-[e $U 845  ]
+[e ++ _ind -> -> 1 `i `uc ]
+"174
+[; ;main.c: 174: 
+}
+[e $U 866  ]
+[e :U 867 ]
+}
 "175
-[; ;main.c: 175:             case TX_IDLE:
+[; ;main.c: 175:                 case 'S':
+[e ( _printf , (. :s 34C -> *U + &U _transmitIRBuffer * -> _ind `ux -> -> # *U &U _transmitIRBuffer `ui `ux `i ]
+"176
+[; ;main.c: 176: 
+[e ( _printf , (. :s 35C -> *U + &U _transmitIRBuffer * -> -> -> 0 `i `ui `ux -> -> # *U &U _transmitIRBuffer `ui `ux `i ]
+"177
+[; ;main.c: 177:                     newCharacterToSend = 1;
+[e ( _printf , (. :s 36C -> *U + &U _transmitIRBuffer * -> -> -> 1 `i `ui `ux -> -> # *U &U _transmitIRBuffer `ui `ux `i ]
+"178
+[; ;main.c: 178:                     printf("just sent %c    %x\r\n", letter, letter);
+[e $U 845  ]
+"179
+[; ;main.c: 179:                     letter += 1;
+}
+"184
+[; ;main.c: 184: 
+[e :U 870 ]
+"185
+[; ;main.c: 185:                 case 'R':
+[e ( _printf :s 37C ]
+"186
+[; ;main.c: 186:                     if (PIR3bits.RC2IF == 1)
+[e = *U + &U _transmitIRBuffer * -> -> -> 0 `i `ui `ux -> -> # *U &U _transmitIRBuffer `ui `ux -> ( _userEnter8bit ..  `uc ]
+"187
+[; ;main.c: 187:                         printf("Just read in %c from EUSART2\r\n", EUSART2_Read());
+[e ( _printf , (. :s 38C -> *U + &U _transmitIRBuffer * -> -> -> 0 `i `ui `ux -> -> # *U &U _transmitIRBuffer `ui `ux `i ]
+"188
+[; ;main.c: 188:                     else
+[e $U 845  ]
+"193
+[; ;main.c: 193: 
+[e :U 871 ]
+"194
+[; ;main.c: 194: 
+[e $U 845  ]
+"199
+[; ;main.c: 199: 
+[e :U 872 ]
+"201
+[; ;main.c: 201: 
+[e = _newCharacterToSend -> -> 1 `i `uc ]
+"202
+[; ;main.c: 202: 
+[e ( _printf , , (. :s 39C -> _letter `i -> _letter `i ]
+"203
+[; ;main.c: 203: 
+[e =+ _letter -> -> 1 `i `uc ]
+"204
+[; ;main.c: 204: 
+[e $U 845  ]
+"209
+[; ;main.c: 209:                     printf("Just reset EUSART2\r\n");
+[e :U 873 ]
+"210
+[; ;main.c: 210:                     break;
+[e $ ! == -> . . _PIR3bits 0 5 `i -> 1 `i 874  ]
+"211
+[; ;main.c: 211: 
+[e ( _printf , (. :s 40C -> ( _EUSART2_Read ..  `i ]
+[e $U 875  ]
+"212
+[; ;main.c: 212: 
+[e :U 874 ]
+"213
+[; ;main.c: 213: 
+[e ( _printf :s 41C ]
+[e :U 875 ]
+"214
+[; ;main.c: 214: 
+[e $U 845  ]
+"219
+[; ;main.c: 219: 
+[e :U 876 ]
+"220
+[; ;main.c: 220:             }
+[e :U 877 ]
+"221
+[; ;main.c: 221:         }
+[e $ ! == -> _cmd `ui -> 88 `ui 878  ]
+[e :U 878 ]
+"222
+[; ;main.c: 222:     }
+[e $ ! == -> _cmd `ui -> 120 `ui 879  ]
+[e :U 879 ]
+"224
+[; ;main.c: 224: 
+[e $U 845  ]
+"230
+[; ;main.c: 230: 
+[e :U 880 ]
+"231
+[; ;main.c: 231: 
+[e = . . _RCSTA2bits 0 4 -> -> 0 `i `uc ]
+"232
+[; ;main.c: 232: void myTMR1ISR(void) {
+[e = . . _RCSTA2bits 0 4 -> -> 1 `i `uc ]
+"233
+[; ;main.c: 233: 
+[e ( _printf :s 42C ]
+"234
+[; ;main.c: 234:     static myTXstates_t tmr1ISRstate = TX_IDLE;
+[e $U 845  ]
+"240
+[; ;main.c: 240: 
+[e :U 881 ]
+"241
+[; ;main.c: 241: 
+[e ( _printf , (. :s 43C -> _cmd `i ]
+"242
+[; ;main.c: 242: 
+[e $U 845  ]
+"244
+[; ;main.c: 244:             case TX_IDLE:
 }
 [e $U 845  ]
 [e :U 846 ]
@@ -1170,150 +1334,271 @@ Version 4.0 HI-TECH Software Intermediate Code
  , $ -> -> 111 `ui `i 848
  , $ -> -> 90 `ui `i 849
  , $ -> -> 122 `ui `i 853
- , $ -> -> 83 `ui `i 857
- , $ -> -> 82 `ui `i 858
- , $ -> -> 114 `ui `i 861
- , $ -> -> 112 `ui `i 862
- , $ -> -> 80 `ui `i 863
- 866 ]
+ , $ -> -> 98 `ui `i 857
+ , $ -> -> 109 `ui `i 858
+ , $ -> -> 115 `ui `i 870
+ , $ -> -> 100 `ui `i 871
+ , $ -> -> 83 `ui `i 872
+ , $ -> -> 82 `ui `i 873
+ , $ -> -> 88 `ui `i 876
+ , $ -> -> 120 `ui `i 877
+ , $ -> -> 114 `ui `i 880
+ 881 ]
 [e :U 845 ]
-"176
-[; ;main.c: 176:                 EPWM2_LoadDutyValue(25);
+"245
+[; ;main.c: 245:                 EPWM2_LoadDutyValue(25);
 }
 [e :U 844 ]
-"177
-[; ;main.c: 177:                 tmr1ISRstate = TX_DATA_BITS;
+"246
+[; ;main.c: 246:                 tmr1ISRstate = TX_DATA_BITS;
 }
 [e $U 841  ]
 [e :U 842 ]
 }
-"178
-[; ;main.c: 178:                 mask = 0b00000001;
+"247
+[; ;main.c: 247:                 mask = 0b00000001;
 [e :UE 835 ]
 }
-"187
-[; ;main.c: 187:                     tmr1ISRstate = TX_IDLE;
+"256
+[; ;main.c: 256:                     tmr1ISRstate = TX_IDLE;
 [v _myTMR1ISR `(v ~T0 @X0 1 ef ]
 {
 [e :U _myTMR1ISR ]
 [f ]
-"189
-[; ;main.c: 189:                     newCharacterToSend = 0;
-[v F6192 `E6187 ~T0 @X0 1 s tmr1ISRstate ]
-[i F6192
-. `E6187 0
+"258
+[; ;main.c: 258:                     newCharacterToSend = 0;
+[v F6194 `E6189 ~T0 @X0 1 s tmr1ISRstate ]
+[i F6194
+. `E6189 0
 ]
-"190
-[; ;main.c: 190:                 } else {
-[v F6193 `uc ~T0 @X0 1 s mask ]
-[i F6193
+"259
+[; ;main.c: 259:                 } else {
+[v F6195 `uc ~T0 @X0 1 s mask ]
+[i F6195
 -> -> 1 `i `uc
 ]
-"192
-[; ;main.c: 192:                     else EPWM2_LoadDutyValue(25);
-[e $ ! == -> _newCharacterToSend `i -> 1 `i 868  ]
+"261
+[; ;main.c: 261:                     else EPWM2_LoadDutyValue(25);
+[e $ ! == -> _newCharacterToSend `i -> 1 `i 883  ]
 {
-"194
-[; ;main.c: 194: 
-[e $U 870  ]
+"263
+[; ;main.c: 263: 
+[e $U 885  ]
 {
-"199
-[; ;main.c: 199: 
-[e :U 871 ]
-"200
-[; ;main.c: 200: 
+"268
+[; ;main.c: 268: 
+[e :U 886 ]
+"269
+[; ;main.c: 269: 
 [e ( _EPWM2_LoadDutyValue (1 -> -> 25 `i `us ]
-"201
-[; ;main.c: 201:             default:
-[e = F6192 . `E6187 1 ]
-"202
-[; ;main.c: 202:                 tmr1ISRstate = TX_IDLE;
-[e = F6193 -> -> 1 `i `uc ]
-"203
-[; ;main.c: 203:                 break;
-[e $U 869  ]
-"208
-[; ;main.c: 208:     PIR1bits.TMR1IF = 0;
-[e :U 872 ]
-"210
-[e $ ! == -> F6193 `i -> 0 `i 873  ]
+"270
+[; ;main.c: 270:             default:
+[e = F6194 . `E6189 1 ]
+"271
+[; ;main.c: 271:                 tmr1ISRstate = TX_IDLE;
+[e = F6195 -> -> 1 `i `uc ]
+"272
+[; ;main.c: 272:                 break;
+[e $U 884  ]
+"277
+[; ;main.c: 277:     PIR1bits.TMR1IF = 0;
+[e :U 887 ]
+"279
+[; ;main.c: 279: 
+[e $ ! == -> F6195 `i -> 0 `i 888  ]
 {
-"211
-[e = F6192 . `E6187 0 ]
-"212
+"280
+[; ;main.c: 280: 
+[e = F6194 . `E6189 0 ]
+"281
+[; ;main.c: 281: 
 [e ( _EPWM2_LoadDutyValue (1 -> -> 0 `i `us ]
-"213
+"282
+[; ;main.c: 282: 
 [e = _newCharacterToSend -> -> 0 `i `uc ]
-"214
+"283
+[; ;main.c: 283: uint8_t userEnter8bit() {
 }
-[e $U 874  ]
-[e :U 873 ]
+[e $U 889  ]
+[e :U 888 ]
 {
-"215
-[e $ ! != & -> _letter `i -> F6193 `i -> 0 `i 875  ]
+"284
+[; ;main.c: 284:     uint8_t num = 0;
+[e $ ! != & -> _letter `i -> F6195 `i -> 0 `i 890  ]
 [e ( _EPWM2_LoadDutyValue (1 -> -> 0 `i `us ]
-[e $U 876  ]
-"216
-[e :U 875 ]
+[e $U 891  ]
+"285
+[; ;main.c: 285:     for(uint8_t i = 0; i < 3; ++i) {
+[e :U 890 ]
 [e ( _EPWM2_LoadDutyValue (1 -> -> 25 `i `us ]
-[e :U 876 ]
-"217
+[e :U 891 ]
+"286
+[; ;main.c: 286:         while(!(EUSART1_is_rx_ready()));
 }
-[e :U 874 ]
-"219
-[e = F6193 -> << -> F6193 `i -> 1 `i `uc ]
-"220
-[e $U 869  ]
-"225
-[e :U 877 ]
-"226
-[e = F6192 . `E6187 0 ]
-"227
-[e $U 869  ]
-"228
+[e :U 889 ]
+"288
+[; ;main.c: 288:         if (cmd == '\r') break;
+[e = F6195 -> << -> F6195 `i -> 1 `i `uc ]
+"289
+[; ;main.c: 289: 
+[e $U 884  ]
+"294
+[; ;main.c: 294:             case 0:
+[e :U 892 ]
+"295
+[; ;main.c: 295:                 num = num + (digit * 10 * 10);
+[e = F6194 . `E6189 0 ]
+"296
+[; ;main.c: 296:                 break;
+[e $U 884  ]
+"297
+[; ;main.c: 297:             case 1:
 }
-[e $U 869  ]
-[e :U 870 ]
-[e [\ -> F6192 `ui , $ -> . `E6187 0 `ui 871
- , $ -> . `E6187 1 `ui 872
- 877 ]
-[e :U 869 ]
-"229
+[e $U 884  ]
+[e :U 885 ]
+[e [\ -> F6194 `ui , $ -> . `E6189 0 `ui 886
+ , $ -> . `E6189 1 `ui 887
+ 892 ]
+[e :U 884 ]
+"298
+[; ;main.c: 298:                 num = num + (digit * 10);
 }
-[e :U 868 ]
-"231
+[e :U 883 ]
+"300
+[; ;main.c: 300:             case 2:
 [e ( _TMR1_WriteTimer (1 -> - -> 65536 `l -> -> 6666 `i `l `us ]
-"232
+"301
+[; ;main.c: 301:                 num = num + digit;
 [e = . . _PIR1bits 0 0 -> -> 0 `i `uc ]
-"233
-[e :UE 867 ]
+"302
+[; ;main.c: 302:                 break;
+[e :UE 882 ]
+}
+"307
+[; ;main.c: 307: }
+[v _userEnter8bit `(uc ~T0 @X0 1 ef ]
+{
+[e :U _userEnter8bit ]
+[f ]
+"308
+[v _num `uc ~T0 @X0 1 a ]
+[e = _num -> -> 0 `i `uc ]
+"309
+{
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 3 `i 894  ]
+[e $U 895  ]
+[e :U 894 ]
+{
+"310
+[e $U 897  ]
+[e :U 898 ]
+[e :U 897 ]
+[e $ ! != -> ( _EUSART1_is_rx_ready ..  `i -> 0 `i 898  ]
+[e :U 899 ]
+"311
+[v _cmd `uc ~T0 @X0 1 a ]
+[e = _cmd -> ( _EUSART1_Read ..  `uc ]
+"312
+[e $ ! == -> _cmd `ui -> 13 `ui 900  ]
+[e $U 895  ]
+[e :U 900 ]
+"314
+[e ( _printf , (. :s 44C -> _cmd `i ]
+"315
+[v _digit `uc ~T0 @X0 1 a ]
+[e = _digit -> - -> _cmd `i -> 48 `i `uc ]
+"316
+[e ( _printf , (. :s 45C -> _digit `i ]
+"317
+[e $U 902  ]
+{
+"318
+[e :U 903 ]
+"319
+[e = _num -> + -> _num `i * * -> _digit `i -> 10 `i -> 10 `i `uc ]
+"320
+[e $U 901  ]
+"321
+[e :U 904 ]
+"322
+[e = _num -> + -> _num `i * -> _digit `i -> 10 `i `uc ]
+"323
+[e $U 901  ]
+"324
+[e :U 905 ]
+"325
+[e = _num -> + -> _num `i -> _digit `i `uc ]
+"326
+[e $U 901  ]
+"327
+}
+[e $U 901  ]
+[e :U 902 ]
+[e [\ -> _i `i , $ -> 0 `i 903
+ , $ -> 1 `i 904
+ , $ -> 2 `i 905
+ 901 ]
+[e :U 901 ]
+"328
+}
+[e =+ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 3 `i 894  ]
+[e :U 895 ]
+}
+"329
+[e ( _printf :s 46C ]
+"330
+[e ) _num ]
+[e $UE 893  ]
+"331
+[e :UE 893 ]
 }
 [p f _printf 13107328 ]
+[a 45C 68 105 103 105 116 58 32 37 100 0 ]
+[a 38C 83 82 67 58 32 37 100 0 ]
+[a 29C 37 99 0 ]
+[a 33C 37 99 0 ]
+[a 44C 37 99 0 ]
+[a 28C 62 0 ]
 [a 6C 13 10 62 32 0 ]
-[a 23C 106 117 115 116 32 115 101 110 116 32 37 99 32 32 32 32 37 120 13 10 0 ]
+[a 37C 69 110 116 101 114 32 115 111 117 114 99 101 32 97 100 100 114 101 115 115 58 32 0 ]
+[a 31C 9 77 101 115 115 97 103 101 58 32 0 ]
+[a 17C 115 58 32 115 101 116 32 115 111 117 114 99 101 32 116 114 97 110 115 109 105 116 32 105 100 101 110 116 105 116 121 13 10 0 ]
+[a 39C 106 117 115 116 32 115 101 110 116 32 37 99 32 32 32 32 37 120 13 10 0 ]
 [a 11C 63 58 32 104 101 108 112 32 109 101 110 117 13 10 0 ]
-[a 18C 112 47 80 58 32 100 101 99 114 101 97 115 101 47 105 110 99 114 101 97 115 101 32 80 87 77 32 112 101 114 105 111 100 32 98 121 32 49 117 115 13 10 0 ]
+[a 18C 100 58 32 115 101 116 32 68 101 115 116 105 110 97 116 105 111 110 32 116 114 97 110 115 109 105 116 32 116 97 114 103 101 116 13 10 0 ]
 [a 5C 73 110 115 116 97 108 108 32 97 32 106 117 109 112 101 114 32 111 118 101 114 32 73 82 95 84 88 32 104 101 97 100 101 114 32 112 105 110 115 13 10 0 ]
 [a 13C 90 58 32 82 101 115 101 116 32 112 114 111 99 101 115 115 111 114 13 10 0 ]
-[a 15C 83 58 32 83 101 110 100 32 37 99 32 117 115 105 110 103 32 73 82 32 116 114 97 110 115 109 105 116 116 101 114 13 10 0 ]
-[a 16C 82 58 32 117 115 101 32 69 85 83 65 82 84 50 32 116 111 32 100 101 99 111 100 101 32 99 104 97 114 97 99 116 101 114 13 10 0 ]
 [a 2C 82 101 99 101 105 118 101 32 97 110 100 32 100 101 99 111 100 101 32 97 110 32 73 82 32 99 104 97 114 97 99 116 101 114 13 10 0 ]
+[a 20C 82 58 32 82 101 99 101 105 118 101 32 109 101 115 115 97 103 101 32 117 115 105 110 103 32 69 85 83 65 82 84 50 32 118 105 97 32 73 82 32 100 101 99 111 100 101 114 13 10 0 ]
 [a 14C 122 58 32 67 108 101 97 114 32 116 104 101 32 116 101 114 109 105 110 97 108 13 10 0 ]
-[a 20C 111 58 9 111 107 13 10 0 ]
+[a 24C 111 58 9 111 107 13 10 0 ]
 [a 12C 111 58 32 107 13 10 0 ]
 [a 3C 68 101 118 39 50 49 32 66 111 97 114 100 32 119 105 114 105 110 103 13 10 0 ]
+[a 15C 98 58 32 115 101 116 32 66 97 117 100 32 114 97 116 101 13 10 0 ]
 [a 8C 50 52 48 48 32 66 97 117 100 13 10 0 ]
-[a 27C 80 101 114 105 111 100 32 61 32 37 100 13 10 0 ]
+[a 34C 9 99 104 101 99 107 115 117 109 58 32 37 100 13 10 0 ]
+[a 36C 9 68 69 83 58 32 37 100 13 10 0 ]
+[a 35C 9 83 82 67 58 32 37 100 13 10 0 ]
 [a 9C 80 82 50 58 32 37 100 13 10 0 ]
-[a 28C 85 110 107 110 111 119 110 32 107 101 121 32 37 99 13 10 0 ]
+[a 43C 85 110 107 110 111 119 110 32 107 101 121 32 37 99 13 10 0 ]
+[a 19C 83 58 32 83 101 110 100 32 109 101 115 115 97 103 101 32 117 115 105 110 103 32 84 77 82 49 32 73 83 82 13 10 0 ]
 [a 1C 76 97 98 32 55 13 10 0 ]
 [a 4C 73 110 115 116 97 108 108 32 97 32 106 117 109 112 101 114 32 119 105 114 101 32 102 114 111 109 32 82 67 48 32 116 111 32 82 66 55 32 79 78 76 89 32 65 70 84 69 82 32 117 110 112 108 117 103 103 105 110 103 32 80 73 67 75 105 116 51 13 10 0 ]
-[a 26C 74 117 115 116 32 114 101 115 101 116 32 69 85 83 65 82 84 50 13 10 0 ]
-[a 17C 114 58 32 114 101 115 101 116 32 69 85 83 65 82 84 50 13 10 0 ]
-[a 25C 78 111 116 104 105 110 103 32 114 101 99 101 105 118 101 100 32 102 114 111 109 32 69 85 83 65 82 84 50 13 10 0 ]
-[a 24C 74 117 115 116 32 114 101 97 100 32 105 110 32 37 99 32 102 114 111 109 32 69 85 83 65 82 84 50 13 10 0 ]
+[a 42C 74 117 115 116 32 114 101 115 101 116 32 69 85 83 65 82 84 50 13 10 0 ]
+[a 41C 78 111 116 104 105 110 103 32 114 101 99 101 105 118 101 100 32 102 114 111 109 32 69 85 83 65 82 84 50 13 10 0 ]
+[a 40C 74 117 115 116 32 114 101 97 100 32 105 110 32 37 99 32 102 114 111 109 32 69 85 83 65 82 84 50 13 10 0 ]
+[a 16C 109 58 32 99 114 101 97 116 101 32 97 32 78 85 76 76 32 116 101 114 109 105 110 97 116 101 100 32 109 101 115 115 97 103 101 32 119 105 116 104 32 83 82 67 32 97 110 100 32 68 69 83 84 32 112 114 101 102 105 120 46 13 10 0 ]
+[a 27C 69 110 116 101 114 32 97 32 109 101 115 115 97 103 101 44 32 104 105 116 32 114 101 116 117 114 110 32 119 104 101 110 32 100 111 110 101 46 13 10 0 ]
+[a 22C 120 47 82 58 32 100 101 99 111 100 101 32 116 120 47 82 88 32 109 101 115 115 97 103 101 46 13 10 0 ]
+[a 21C 77 58 32 77 111 110 105 116 111 114 32 97 108 108 32 73 82 32 116 114 97 102 102 105 99 46 13 10 0 ]
 [a 7C 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 13 10 0 ]
 [a 10C 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 13 10 0 ]
-[a 19C 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 13 10 0 ]
-[a 21C 10 0 ]
-[a 22C 10 0 ]
+[a 23C 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 13 10 0 ]
+[a 30C 13 10 0 ]
+[a 32C 13 10 0 ]
+[a 46C 13 10 0 ]
+[a 25C 10 0 ]
+[a 26C 10 0 ]

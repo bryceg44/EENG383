@@ -3,8 +3,8 @@
 [d edition pro ]
 [d chip 18F26K22 ]
 [d frameptr 4065 ]
-"189 C:\Users\james\Documents\EENG383\EENG383\Lab07.X\main.c
-[e E6187 . `uc
+"258 C:\Users\james\Documents\EENG383\EENG383\Lab07.X\main.c
+[e E6189 . `uc
 TX_IDLE 0
 TX_DATA_BITS 1
 ]
@@ -68,8 +68,10 @@ TX_DATA_BITS 1
 [v ___omul __omul `(uo  1 e 8 0 ]
 "49 C:\Users\james\Documents\EENG383\EENG383\Lab07.X\main.c
 [v _main main `(v  1 e 1 0 ]
-"187
+"256
 [v _myTMR1ISR myTMR1ISR `(v  1 e 1 0 ]
+"307
+[v _userEnter8bit userEnter8bit `(uc  1 e 1 0 ]
 "64 C:\Users\james\Documents\EENG383\EENG383\Lab07.X\mcc_generated_files/epwm2.c
 [v _EPWM2_Initialize EPWM2_Initialize `(v  1 e 1 0 ]
 "90
@@ -180,7 +182,7 @@ TX_DATA_BITS 1
 [v _BAUDCON2 BAUDCON2 `VEuc  1 e 1 @3952 ]
 "4444
 [v _RCSTA2 RCSTA2 `VEuc  1 e 1 @3953 ]
-[s S777 . 1 `uc 1 RX9D 1 0 :1:0 
+[s S781 . 1 `uc 1 RX9D 1 0 :1:0 
 `uc 1 OERR 1 0 :1:1 
 `uc 1 FERR 1 0 :1:2 
 `uc 1 ADDEN 1 0 :1:3 
@@ -190,10 +192,10 @@ TX_DATA_BITS 1
 `uc 1 SPEN 1 0 :1:7 
 ]
 "4489
-[s S786 . 1 `uc 1 . 1 0 :3:0 
+[s S790 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 ADEN 1 0 :1:3 
 ]
-[s S789 . 1 `uc 1 RX9D2 1 0 :1:0 
+[s S793 . 1 `uc 1 RX9D2 1 0 :1:0 
 `uc 1 OERR2 1 0 :1:1 
 `uc 1 FERR2 1 0 :1:2 
 `uc 1 ADDEN2 1 0 :1:3 
@@ -202,18 +204,18 @@ TX_DATA_BITS 1
 `uc 1 RX92 1 0 :1:6 
 `uc 1 SPEN2 1 0 :1:7 
 ]
-[s S798 . 1 `uc 1 RCD82 1 0 :1:0 
+[s S802 . 1 `uc 1 RCD82 1 0 :1:0 
 `uc 1 . 1 0 :5:1 
 `uc 1 RC8_92 1 0 :1:6 
 ]
-[s S802 . 1 `uc 1 . 1 0 :6:0 
+[s S806 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 RC92 1 0 :1:6 
 ]
-[u S805 . 1 `S777 1 . 1 0 `S786 1 . 1 0 `S789 1 . 1 0 `S798 1 . 1 0 `S802 1 . 1 0 ]
-[v _RCSTA2bits RCSTA2bits `VES805  1 e 1 @3953 ]
+[u S809 . 1 `S781 1 . 1 0 `S790 1 . 1 0 `S793 1 . 1 0 `S802 1 . 1 0 `S806 1 . 1 0 ]
+[v _RCSTA2bits RCSTA2bits `VES809  1 e 1 @3953 ]
 "4732
 [v _TXSTA2 TXSTA2 `VEuc  1 e 1 @3954 ]
-[s S972 . 1 `uc 1 TX9D 1 0 :1:0 
+[s S1001 . 1 `uc 1 TX9D 1 0 :1:0 
 `uc 1 TRMT 1 0 :1:1 
 `uc 1 BRGH 1 0 :1:2 
 `uc 1 SENDB 1 0 :1:3 
@@ -223,7 +225,7 @@ TX_DATA_BITS 1
 `uc 1 CSRC 1 0 :1:7 
 ]
 "4769
-[s S981 . 1 `uc 1 TX9D2 1 0 :1:0 
+[s S1010 . 1 `uc 1 TX9D2 1 0 :1:0 
 `uc 1 TRMT2 1 0 :1:1 
 `uc 1 BRGH2 1 0 :1:2 
 `uc 1 SENDB2 1 0 :1:3 
@@ -232,12 +234,12 @@ TX_DATA_BITS 1
 `uc 1 TX92 1 0 :1:6 
 `uc 1 CSRC2 1 0 :1:7 
 ]
-[s S990 . 1 `uc 1 TXD82 1 0 :1:0 
+[s S1019 . 1 `uc 1 TXD82 1 0 :1:0 
 `uc 1 . 1 0 :5:1 
 `uc 1 TX8_92 1 0 :1:6 
 ]
-[u S994 . 1 `S972 1 . 1 0 `S981 1 . 1 0 `S990 1 . 1 0 ]
-[v _TXSTA2bits TXSTA2bits `VES994  1 e 1 @3954 ]
+[u S1023 . 1 `S1001 1 . 1 0 `S1010 1 . 1 0 `S1019 1 . 1 0 ]
+[v _TXSTA2bits TXSTA2bits `VES1023  1 e 1 @3954 ]
 "4984
 [v _TXREG2 TXREG2 `VEuc  1 e 1 @3955 ]
 "5022
@@ -292,7 +294,7 @@ TX_DATA_BITS 1
 ]
 [u S128 . 1 `S115 1 . 1 0 `S123 1 . 1 0 ]
 [v _PIR1bits PIR1bits `VES128  1 e 1 @3998 ]
-[s S745 . 1 `uc 1 TMR1GIF 1 0 :1:0 
+[s S749 . 1 `uc 1 TMR1GIF 1 0 :1:0 
 `uc 1 TMR3GIF 1 0 :1:1 
 `uc 1 TMR5GIF 1 0 :1:2 
 `uc 1 CTMUIF 1 0 :1:3 
@@ -302,17 +304,17 @@ TX_DATA_BITS 1
 `uc 1 SSP2IF 1 0 :1:7 
 ]
 "9239
-[s S754 . 1 `uc 1 . 1 0 :1:0 
+[s S758 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 RXBNIF 1 0 :1:1 
 `uc 1 . 1 0 :2:2 
 `uc 1 TXBNIF 1 0 :1:4 
 ]
-[u S759 . 1 `S745 1 . 1 0 `S754 1 . 1 0 ]
-[v _PIR3bits PIR3bits `VES759  1 e 1 @4004 ]
+[u S763 . 1 `S749 1 . 1 0 `S758 1 . 1 0 ]
+[v _PIR3bits PIR3bits `VES763  1 e 1 @4004 ]
 "9582
 [v _RCSTA1 RCSTA1 `VEuc  1 e 1 @4011 ]
 "9635
-[s S1224 . 1 `uc 1 RX9D1 1 0 :1:0 
+[s S1253 . 1 `uc 1 RX9D1 1 0 :1:0 
 `uc 1 OERR1 1 0 :1:1 
 `uc 1 FERR1 1 0 :1:2 
 `uc 1 ADDEN1 1 0 :1:3 
@@ -321,22 +323,22 @@ TX_DATA_BITS 1
 `uc 1 RX91 1 0 :1:6 
 `uc 1 SPEN1 1 0 :1:7 
 ]
-[s S1233 . 1 `uc 1 RCD8 1 0 :1:0 
+[s S1262 . 1 `uc 1 RCD8 1 0 :1:0 
 `uc 1 . 1 0 :5:1 
 `uc 1 RC8_9 1 0 :1:6 
 ]
-[s S1237 . 1 `uc 1 . 1 0 :6:0 
+[s S1266 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 RC9 1 0 :1:6 
 ]
-[s S1240 . 1 `uc 1 . 1 0 :5:0 
+[s S1269 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 SRENA 1 0 :1:5 
 ]
-[u S1243 . 1 `S777 1 . 1 0 `S786 1 . 1 0 `S1224 1 . 1 0 `S1233 1 . 1 0 `S1237 1 . 1 0 `S1240 1 . 1 0 ]
-[v _RCSTA1bits RCSTA1bits `VES1243  1 e 1 @4011 ]
+[u S1272 . 1 `S781 1 . 1 0 `S790 1 . 1 0 `S1253 1 . 1 0 `S1262 1 . 1 0 `S1266 1 . 1 0 `S1269 1 . 1 0 ]
+[v _RCSTA1bits RCSTA1bits `VES1272  1 e 1 @4011 ]
 "10038
 [v _TXSTA1 TXSTA1 `VEuc  1 e 1 @4012 ]
 "10079
-[s S1172 . 1 `uc 1 TX9D1 1 0 :1:0 
+[s S1201 . 1 `uc 1 TX9D1 1 0 :1:0 
 `uc 1 TRMT1 1 0 :1:1 
 `uc 1 BRGH1 1 0 :1:2 
 `uc 1 SENDB1 1 0 :1:3 
@@ -345,12 +347,12 @@ TX_DATA_BITS 1
 `uc 1 TX91 1 0 :1:6 
 `uc 1 CSRC1 1 0 :1:7 
 ]
-[s S1181 . 1 `uc 1 TXD8 1 0 :1:0 
+[s S1210 . 1 `uc 1 TXD8 1 0 :1:0 
 `uc 1 . 1 0 :5:1 
 `uc 1 TX8_9 1 0 :1:6 
 ]
-[u S1185 . 1 `S972 1 . 1 0 `S1172 1 . 1 0 `S1181 1 . 1 0 ]
-[v _TXSTA1bits TXSTA1bits `VES1185  1 e 1 @4012 ]
+[u S1214 . 1 `S1001 1 . 1 0 `S1201 1 . 1 0 `S1210 1 . 1 0 ]
+[v _TXSTA1bits TXSTA1bits `VES1214  1 e 1 @4012 ]
 "10413
 [v _TXREG1 TXREG1 `VEuc  1 e 1 @4013 ]
 "10491
@@ -528,18 +530,20 @@ TX_DATA_BITS 1
 [v _dbuf dbuf `[32]uc  1 s 32 dbuf ]
 "69
 [v _nout nout `i  1 s 2 nout ]
-"42 C:\Users\james\Documents\EENG383\EENG383\Lab07.X\main.c
+"32 C:\Users\james\Documents\EENG383\EENG383\Lab07.X\main.c
+[v _transmitIRBuffer transmitIRBuffer `[32]uc  1 e 32 0 ]
+"42
 [v _letter letter `uc  1 e 1 0 ]
 "43
 [v _newCharacterToSend newCharacterToSend `uc  1 e 1 0 ]
-[s S908 . 1 `uc 1 perr 1 0 :1:0 
+[s S937 . 1 `uc 1 perr 1 0 :1:0 
 `uc 1 ferr 1 0 :1:1 
 `uc 1 oerr 1 0 :1:2 
 `uc 1 reserved 1 0 :5:3 
 ]
 "52 C:\Users\james\Documents\EENG383\EENG383\Lab07.X\mcc_generated_files/eusart1.c
-[u S913 . 1 `S908 1 . 1 0 `uc 1 status 1 0 ]
-[v _eusart1RxLastError eusart1RxLastError `VES913  1 e 1 0 ]
+[u S942 . 1 `S937 1 . 1 0 `uc 1 status 1 0 ]
+[v _eusart1RxLastError eusart1RxLastError `VES942  1 e 1 0 ]
 "58
 [v _EUSART1_FramingErrorHandler EUSART1_FramingErrorHandler `*.37(v  1 e 2 0 ]
 "59
@@ -547,7 +551,7 @@ TX_DATA_BITS 1
 "60
 [v _EUSART1_ErrorHandler EUSART1_ErrorHandler `*.37(v  1 e 2 0 ]
 "52 C:\Users\james\Documents\EENG383\EENG383\Lab07.X\mcc_generated_files/eusart2.c
-[v _eusart2RxLastError eusart2RxLastError `VES913  1 e 1 0 ]
+[v _eusart2RxLastError eusart2RxLastError `VES942  1 e 1 0 ]
 "58
 [v _EUSART2_FramingErrorHandler EUSART2_FramingErrorHandler `*.37(v  1 e 2 0 ]
 "59
@@ -561,11 +565,27 @@ TX_DATA_BITS 1
 "49 C:\Users\james\Documents\EENG383\EENG383\Lab07.X\main.c
 [v _main main `(v  1 e 1 0 ]
 {
+"142
+[v main@ind ind `uc  1 a 1 54 ]
+[v main@cksum cksum `uc  1 a 1 51 ]
 "51
-[v main@i i `uc  1 a 1 46 ]
+[v main@i i `uc  1 a 1 53 ]
 "52
-[v main@cmd cmd `uc  1 a 1 45 ]
-"178
+[v main@cmd cmd `uc  1 a 1 52 ]
+"247
+} 0
+"307
+[v _userEnter8bit userEnter8bit `(uc  1 e 1 0 ]
+{
+"315
+[v userEnter8bit@digit digit `uc  1 a 1 47 ]
+"311
+[v userEnter8bit@cmd cmd `uc  1 a 1 45 ]
+"309
+[v userEnter8bit@i i `uc  1 a 1 46 ]
+"308
+[v userEnter8bit@num num `uc  1 a 1 48 ]
+"331
 } 0
 "5 C:\Program Files\Microchip\xc8\v2.20\pic\sources\c99\common\printf.c
 [v _printf printf `(i  1 e 2 0 ]
@@ -581,9 +601,9 @@ TX_DATA_BITS 1
 {
 "1371
 [v vfprintf@cfmt cfmt `*.32uc  1 a 2 76 ]
-[s S1796 _IO_FILE 0 ]
+[s S1825 _IO_FILE 0 ]
 "1368
-[v vfprintf@fp fp `*.2S1796  1 p 2 27 ]
+[v vfprintf@fp fp `*.2S1825  1 p 2 27 ]
 [v vfprintf@fmt fmt `*.32Cuc  1 p 2 29 ]
 [v vfprintf@ap ap `*.39*.39v  1 p 2 31 ]
 "1382
@@ -597,9 +617,9 @@ TX_DATA_BITS 1
 [v vfpfcnvrt@ll ll `o  1 a 8 10 ]
 "672
 [v vfpfcnvrt@c c `uc  1 a 1 26 ]
-[s S1796 _IO_FILE 0 ]
+[s S1825 _IO_FILE 0 ]
 "670
-[v vfpfcnvrt@fp fp `*.2S1796  1 p 2 0 ]
+[v vfpfcnvrt@fp fp `*.2S1825  1 p 2 0 ]
 [v vfpfcnvrt@fmt fmt `*.39*.32uc  1 p 2 2 ]
 [v vfpfcnvrt@ap ap `*.39*.39v  1 p 2 4 ]
 "1365
@@ -614,9 +634,9 @@ TX_DATA_BITS 1
 [v xtoa@i i `i  1 a 2 72 ]
 [v xtoa@w w `i  1 a 2 62 ]
 [v xtoa@p p `i  1 a 2 60 ]
-[s S1796 _IO_FILE 0 ]
+[s S1825 _IO_FILE 0 ]
 "623
-[v xtoa@fp fp `*.2S1796  1 p 2 37 ]
+[v xtoa@fp fp `*.2S1825  1 p 2 37 ]
 [v xtoa@d d `uo  1 p 8 39 ]
 [v xtoa@x x `uc  1 p 1 47 ]
 "665
@@ -655,9 +675,9 @@ TX_DATA_BITS 1
 [v dtoa@s s `i  1 a 2 61 ]
 [v dtoa@w w `i  1 a 2 59 ]
 [v dtoa@p p `i  1 a 2 57 ]
-[s S1796 _IO_FILE 0 ]
+[s S1825 _IO_FILE 0 ]
 "274
-[v dtoa@fp fp `*.2S1796  1 p 2 37 ]
+[v dtoa@fp fp `*.2S1825  1 p 2 37 ]
 [v dtoa@d d `o  1 p 8 39 ]
 "315
 } 0
@@ -696,9 +716,9 @@ TX_DATA_BITS 1
 {
 "261
 [v ctoa@w w `i  1 a 2 40 ]
-[s S1796 _IO_FILE 0 ]
+[s S1825 _IO_FILE 0 ]
 "259
-[v ctoa@fp fp `*.2S1796  1 p 2 37 ]
+[v ctoa@fp fp `*.2S1825  1 p 2 37 ]
 [v ctoa@c c `uc  1 p 1 39 ]
 "270
 } 0
@@ -708,9 +728,9 @@ TX_DATA_BITS 1
 "74
 [v pad@w w `i  1 a 2 35 ]
 [v pad@i i `i  1 a 2 33 ]
-[s S1796 _IO_FILE 0 ]
+[s S1825 _IO_FILE 0 ]
 "72
-[v pad@fp fp `*.2S1796  1 p 2 26 ]
+[v pad@fp fp `*.2S1825  1 p 2 26 ]
 [v pad@buf buf `*.39uc  1 p 2 28 ]
 [v pad@p p `i  1 p 2 30 ]
 "95
@@ -733,16 +753,16 @@ TX_DATA_BITS 1
 [v fputs@c c `uc  1 a 1 23 ]
 "8
 [v fputs@s s `*.39Cuc  1 p 2 19 ]
-[s S1779 _IO_FILE 6 `*.2uc 1 buffer 2 0 `i 1 count 2 2 `i 1 limit 2 4 ]
-[v fputs@fp fp `*.2S1779  1 p 2 21 ]
+[s S1808 _IO_FILE 6 `*.2uc 1 buffer 2 0 `i 1 count 2 2 `i 1 limit 2 4 ]
+[v fputs@fp fp `*.2S1808  1 p 2 21 ]
 "19
 } 0
 "8 C:\Program Files\Microchip\xc8\v2.20\pic\sources\c99\common\nf_fputc.c
 [v _fputc fputc `(i  1 e 2 0 ]
 {
 [v fputc@c c `i  1 p 2 10 ]
-[s S1779 _IO_FILE 6 `*.2uc 1 buffer 2 0 `i 1 count 2 2 `i 1 limit 2 4 ]
-[v fputc@fp fp `*.2S1779  1 p 2 12 ]
+[s S1808 _IO_FILE 6 `*.2uc 1 buffer 2 0 `i 1 count 2 2 `i 1 limit 2 4 ]
+[v fputc@fp fp `*.2S1808  1 p 2 12 ]
 "21
 } 0
 "146 C:\Users\james\Documents\EENG383\EENG383\Lab07.X\mcc_generated_files/eusart1.c
@@ -761,6 +781,16 @@ TX_DATA_BITS 1
 [v EUSART1_Write@txData txData `uc  1 a 1 wreg ]
 [v EUSART1_Write@txData txData `uc  1 a 1 8 ]
 "139
+} 0
+"99
+[v _EUSART1_is_rx_ready EUSART1_is_rx_ready `(a  1 e 1 0 ]
+{
+"102
+} 0
+"113
+[v _EUSART1_Read EUSART1_Read `(uc  1 e 1 0 ]
+{
+"130
 } 0
 "121 C:\Users\james\Documents\EENG383\EENG383\Lab07.X\mcc_generated_files/tmr1.c
 [v _TMR1_WriteTimer TMR1_WriteTimer `(v  1 e 1 0 ]
@@ -865,16 +895,6 @@ TX_DATA_BITS 1
 {
 "130
 } 0
-"99 C:\Users\james\Documents\EENG383\EENG383\Lab07.X\mcc_generated_files/eusart1.c
-[v _EUSART1_is_rx_ready EUSART1_is_rx_ready `(a  1 e 1 0 ]
-{
-"102
-} 0
-"113
-[v _EUSART1_Read EUSART1_Read `(uc  1 e 1 0 ]
-{
-"130
-} 0
 "90 C:\Users\james\Documents\EENG383\EENG383\Lab07.X\mcc_generated_files/epwm2.c
 [v _EPWM2_LoadDutyValue EPWM2_LoadDutyValue `(v  1 e 1 0 ]
 {
@@ -896,14 +916,14 @@ TX_DATA_BITS 1
 {
 "179
 } 0
-"187 C:\Users\james\Documents\EENG383\EENG383\Lab07.X\main.c
+"256 C:\Users\james\Documents\EENG383\EENG383\Lab07.X\main.c
 [v _myTMR1ISR myTMR1ISR `(v  1 e 1 0 ]
 {
-"189
-[v myTMR1ISR@tmr1ISRstate tmr1ISRstate `E6187  1 s 1 tmr1ISRstate ]
-"190
+"258
+[v myTMR1ISR@tmr1ISRstate tmr1ISRstate `E6189  1 s 1 tmr1ISRstate ]
+"259
 [v myTMR1ISR@mask mask `uc  1 s 1 mask ]
-"233
+"302
 } 0
 "121 C:\Users\james\Documents\EENG383\EENG383\Lab07.X\mcc_generated_files/tmr1.c
 [v i2_TMR1_WriteTimer TMR1_WriteTimer `(v  1 e 1 0 ]

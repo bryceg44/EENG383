@@ -9607,10 +9607,14 @@ void main(void) {
                     printf("o: k\r\n");
                     printf("Z: Reset processor\r\n");
                     printf("z: Clear the terminal\r\n");
-                    printf("S: Send ""%c"" using IR transmitter\r\n", letter);
-                    printf("R: use EUSART2 to decode character\r\n");
-                    printf("r: reset EUSART2\r\n");
-                    printf("p/P: decrease/increase PWM period by 1us\r\n");
+                    printf("b: set Baud rate\r\n");
+                    printf("m: create a NULL terminated message with SRC and DEST prefix.\r\n");
+                    printf("s: set source transmit identity\r\n");
+                    printf("d: set Destination transmit target\r\n");
+                    printf("S: Send message using TMR1 ISR\r\n");
+                    printf("R: Receive message using EUSART2 via IR decoder\r\n");
+                    printf("M: Monitor all IR traffic.\r\n");
+                    printf("x/R: decode tx/RX message.\r\n");
                     printf("-------------------------------------------------\r\n");
                     break;
 
@@ -9639,6 +9643,69 @@ void main(void) {
 
 
 
+                case 'b':
+                    break;
+
+
+
+
+                case 'm':
+                    {
+                    uint8_t ind = 0, cksum = 0;
+                    printf("Enter a message, hit return when done.\r\n");
+                    printf(">");
+
+
+                    while ((EUSART1_is_rx_ready()));
+                    for (ind = 2; ind < ((32 - 2)); ind++) {
+                        transmitIRBuffer[ind] = EUSART1_Read();
+                        cksum += transmitIRBuffer[ind];
+                        printf("%c", transmitIRBuffer[ind]);
+                        if (transmitIRBuffer[ind] == '\r') {
+                            cksum -= '\r';
+                            printf("\r\n");
+                            break;
+                        }
+                    }
+                    transmitIRBuffer[ind + 1] = '\0';
+                    transmitIRBuffer[ind + 2] = cksum;
+
+
+
+
+                    ind = 2;
+                    printf("\tMessage: ");
+                    for(;;) {
+                        if (transmitIRBuffer[ind] == '\0'){
+                            printf("\r\n");
+                            ind++;
+                            break;
+                        }
+                        printf("%c", transmitIRBuffer[ind]);
+                        ind++;
+                    }
+                    printf("\tchecksum: %d\r\n", transmitIRBuffer[ind]);
+                    printf("\tSRC: %d\r\n", transmitIRBuffer[0]);
+                    printf("\tDES: %d\r\n", transmitIRBuffer[1]);
+                    break;
+                }
+
+
+
+
+                case 's':
+                    printf("Enter source address: ");
+                    transmitIRBuffer[0] = userEnter8bit();
+                    printf("SRC: %d", transmitIRBuffer[0]);
+                    break;
+
+
+
+
+                case 'd':
+                    break;
+
+
 
 
                 case 'S':
@@ -9661,21 +9728,23 @@ void main(void) {
 
 
 
+                case 'X':
+                case 'x':
+                    if (cmd == 'X');
+                    if (cmd == 'x');
+
+                    break;
+
+
+
+
+
                 case 'r':
                     RCSTA2bits.CREN = 0;
                     RCSTA2bits.CREN = 1;
                     printf("Just reset EUSART2\r\n");
                     break;
 
-
-
-
-                case 'p':
-                case 'P':
-                    if (cmd == 'p') PR2 -= 4;
-                    if (cmd == 'P') PR2 += 4;
-                    printf("Period = %d\r\n", PR2);
-                    break;
 
 
 
@@ -9742,4 +9811,33 @@ void myTMR1ISR(void) {
 
     TMR1_WriteTimer(0x10000 - 6666);
     PIR1bits.TMR1IF = 0;
+}
+
+
+
+
+uint8_t userEnter8bit() {
+    uint8_t num = 0;
+    for(uint8_t i = 0; i < 3; ++i) {
+        while(!(EUSART1_is_rx_ready()));
+        char cmd = EUSART1_Read();
+        if (cmd == '\r') break;
+
+        printf("%c", cmd);
+        uint8_t digit = cmd - 48;
+        printf("Digit: %d", digit);
+        switch(i){
+            case 0:
+                num = num + (digit * 10 * 10);
+                break;
+            case 1:
+                num = num + (digit * 10);
+                break;
+            case 2:
+                num = num + digit;
+                break;
+        }
+    }
+    printf("\r\n");
+    return num;
 }
