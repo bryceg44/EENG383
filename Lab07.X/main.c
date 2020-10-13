@@ -39,7 +39,9 @@ char recieveIRBuffer[MAX_BUFFER_SIZE];
 uint8_t receiveBusy = false;
 uint8_t receiveNewMessage = false;
 uint16_t baudRate;
+uint16_t bitPeriod[5] = {53333, 13333, 6666, 1666, 833};
 uint8_t baudRateSelected = 1;
+char letter = '0';
 
 
 //----------------------------------------------
@@ -229,16 +231,16 @@ void main(void) {
                     // Send message using TMR1 ISR
                     //--------------------------------------------  
                 case 'S':
-                	uint16_t baud_rate = bitPeriod[baudRateSelected];
+                	baudRate = bitPeriod[baudRateSelected];
                 	uint8_t tindex = 0;
                 	for(;;) {
-                    	letter = IRtransmitBuffer[i];
+                    	letter = transmitIRBuffer[i];
                     	transmitStart = true;
                         transmitBusy = true;
                         while (transmitBusy);
-                    	if (IRtransmitBuffer[i] == '\0') {
-                        	letter = IRtransmitBuffer[i + 1];
-                        	transmitCharacterOverIR(letter, baud_rate);
+                    	if (transmitIRBuffer[i] == '\0') {
+                        	letter = transmitIRBuffer[i + 1];
+                        	transmitCharacterOverIR(letter, baudRate);
                         	break;
                     	}
                     	++i;
@@ -248,10 +250,7 @@ void main(void) {
                     printf("\tSource Identity:\t%d\r\n", transmitIRBuffer[0]);
                     printf("\tDestination:\t%d\r\n", transmitIRBuffer[1]);
                 	break;
-            	
-
-                
-
+            
                 
 
                 break;    
@@ -285,7 +284,6 @@ void main(void) {
                         printf("No message, receiveNewMessage = false\r\n");
                     break;
 
-
                     //--------------------------------------------
                     // Decode tx/RX message
                     //--------------------------------------------                
@@ -296,7 +294,6 @@ void main(void) {
                     printf("%u\t%u\t%u\t%s\r\n", transmitIRBuffer[0], transmitIRBuffer[1], transmitIRBuffer[2], transmitIRBuffer[1]);
                     break;
 
-                    decodeIntoASCII(transmitIRBuffer);
                 case 'X':
                     printf("RX buffer contents\r\n");
                     decodeIntoASCII(recieveIRBuffer);
