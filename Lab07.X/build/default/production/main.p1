@@ -35,7 +35,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;./mcc_generated_files/tmr1.h: 364:  void TMR1_SetInterruptHandler(void (* InterruptHandler)(void));
 [v _TMR1_SetInterruptHandler `(v ~T0 @X0 0 ef1`*F5776 ]
 "31 main.c
-[; ;main.c: 31:     EPWM2_LoadDutyValue(0);
+[; ;main.c: 31: 
 [v _myTMR1ISR `(v ~T0 @X0 0 ef ]
 "16135 C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\pic\include\proc\pic18f26k22.h
 [; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\pic\include\proc\pic18f26k22.h: 16135:     struct {
@@ -68,7 +68,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\pic\include\proc\pic18f26k22.h: 12506: extern volatile unsigned char PR2 __attribute__((address(0xFBB)));
 [v _PR2 `Vuc ~T0 @X0 0 e@4027 ]
 "28 main.c
-[; ;main.c: 28:     char cmd;
+[; ;main.c: 28:     SYSTEM_Initialize();
 [v _userEnter8bit `(uc ~T0 @X0 0 ef ]
 "9222 C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\pic\include\proc\pic18f26k22.h
 [; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\pic\include\proc\pic18f26k22.h: 9222:     struct {
@@ -85,7 +85,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "9239
 [; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\pic\include\proc\pic18f26k22.h: 9239: extern volatile PIR3bits_t PIR3bits __attribute__((address(0xFA4)));
 [v _PIR3bits `VS437 ~T0 @X0 0 e@4004 ]
-"4455
+"29 main.c
+[; ;main.c: 29:     EPWM2_LoadDutyValue(0);
+[v _decodeIntoASCII `(v ~T0 @X0 0 ef1`*uc ]
+"4455 C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\pic\include\proc\pic18f26k22.h
 [; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\pic\include\proc\pic18f26k22.h: 4455:     struct {
 [s S214 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S214 . RX9D OERR FERR ADDEN CREN SREN RX9 SPEN ]
@@ -112,10 +115,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "4489
 [; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\pic\include\proc\pic18f26k22.h: 4489: extern volatile RCSTA2bits_t RCSTA2bits __attribute__((address(0xF71)));
 [v _RCSTA2bits `VS213 ~T0 @X0 0 e@3953 ]
-"258 main.c
-[; ;main.c: 258:                     newCharacterToSend = 0;
-[c E6189 0 1 .. ]
-[n E6189 . TX_IDLE TX_DATA_BITS  ]
+"260 main.c
+[; ;main.c: 260: 
+[c E6187 0 1 2 3 .. ]
+[n E6187 . TX_IDLE TX_START_BIT TX_DATA_BITS TX_STOP_BIT  ]
 "54 C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\pic\include\proc\pic18f26k22.h
 [; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\pic\include\proc\pic18f26k22.h: 54: __asm("ANSELA equ 0F38h");
 [; <" ANSELA equ 0F38h ;# ">
@@ -867,200 +870,188 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> -> 0 `i `uc
 ]
 "34
-[; ;main.c: 34: 
+[; ;main.c: 34:     TMR1_WriteTimer(0x0000);
 [v _transmitBusy `uc ~T0 @X0 1 e ]
 [i _transmitBusy
 -> -> 0 `i `uc
 ]
 "35
-[; ;main.c: 35: 
+[; ;main.c: 35:     PIR1bits.TMR1IF = 0;
 [v _bitPeriodInTMR1Counts `us ~T0 @X0 1 e ]
 [i _bitPeriodInTMR1Counts
 -> -> 13333 `i `us
 ]
 "38
-[; ;main.c: 38:     while (PIR1bits.TMR1IF == 0);
+[; ;main.c: 38: 
 [v _recieveIRBuffer `uc ~T0 @X0 -> 32 `i e ]
 "39
-[; ;main.c: 39: 
+[; ;main.c: 39:     if ((EUSART2_is_rx_ready())) (void) EUSART2_Read();
 [v _receiveBusy `uc ~T0 @X0 1 e ]
 [i _receiveBusy
 -> -> 0 `i `uc
 ]
 "40
-[; ;main.c: 40: 
+[; ;main.c: 40:     if ((EUSART2_is_rx_ready())) (void) EUSART2_Read();
 [v _receiveNewMessage `uc ~T0 @X0 1 e ]
 [i _receiveNewMessage
 -> -> 0 `i `uc
 ]
-"42
-[; ;main.c: 42:     if ((EUSART2_is_rx_ready())) (void) EUSART2_Read();
-[v _letter `uc ~T0 @X0 1 e ]
-[i _letter
--> -> 48 `ui `uc
-]
-"43
-[; ;main.c: 43: 
-[v _newCharacterToSend `uc ~T0 @X0 1 e ]
-[i _newCharacterToSend
--> -> 0 `i `uc
-]
 [v $root$_main `(v ~T0 @X0 0 e ]
-"49
-[; ;main.c: 49:     printf("Lab 7\r\n");
+"47
+[; ;main.c: 47:     printf("Lab 7\r\n");
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"51
-[; ;main.c: 51:     printf("Dev'21 Board wiring\r\n");
+"49
+[; ;main.c: 49:     printf("Dev'21 Board wiring\r\n");
 [v _i `uc ~T0 @X0 1 a ]
-"52
-[; ;main.c: 52:     printf("Install a jumper wire from RC0 to RB7 ONLY AFTER unplugging PICKit3\r\n");
+"50
+[; ;main.c: 50:     printf("Install a jumper wire from RC0 to RB7 ONLY AFTER unplugging PICKit3\r\n");
 [v _cmd `uc ~T0 @X0 1 a ]
-"54
-[; ;main.c: 54:     printf("\r\n> ");
+"52
+[; ;main.c: 52:     printf("\r\n> ");
 [e ( _SYSTEM_Initialize ..  ]
-"55
-[; ;main.c: 55: 
+"53
+[; ;main.c: 53: 
 [e ( _EPWM2_LoadDutyValue (1 -> -> 0 `i `us ]
-"60
-[; ;main.c: 60:             switch (cmd) {
+"58
+[; ;main.c: 58:             switch (cmd) {
 [e ( _TMR1_WriteTimer (1 -> -> 0 `i `us ]
-"61
-[; ;main.c: 61: 
+"59
+[; ;main.c: 59: 
 [e = . . _PIR1bits 0 0 -> -> 0 `i `uc ]
-"62
-[; ;main.c: 62: 
+"60
+[; ;main.c: 60: 
 [e $U 836  ]
 [e :U 837 ]
 [e :U 836 ]
 [e $ == -> . . _PIR1bits 0 0 `i -> 0 `i 837  ]
 [e :U 838 ]
-"65
-[; ;main.c: 65:                 case '?':
+"63
+[; ;main.c: 63:                 case '?':
 [e $ ! != -> ( _EUSART2_is_rx_ready ..  `i -> 0 `i 839  ]
 [e ( _EUSART2_Read ..  ]
 [e :U 839 ]
-"66
-[; ;main.c: 66:                     printf("-------------------------------------------------\r\n");
+"64
+[; ;main.c: 64:                     printf("-------------------------------------------------\r\n");
 [e $ ! != -> ( _EUSART2_is_rx_ready ..  `i -> 0 `i 840  ]
 [e ( _EUSART2_Read ..  ]
 [e :U 840 ]
-"68
-[; ;main.c: 68:                     printf("PR2: %d\r\n", PR2);
+"66
+[; ;main.c: 66:                     printf("PR2: %d\r\n", PR2);
 [e ( _TMR1_SetInterruptHandler (1 &U _myTMR1ISR ]
-"69
-[; ;main.c: 69:                     printf("-------------------------------------------------\r\n");
+"67
+[; ;main.c: 67:                     printf("-------------------------------------------------\r\n");
 [e = . . _INTCONbits 1 6 -> -> 1 `i `uc ]
-"70
-[; ;main.c: 70:                     printf("?: help menu\r\n");
+"68
+[; ;main.c: 68:                     printf("?: help menu\r\n");
 [e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
-"73
-[; ;main.c: 73:                     printf("z: Clear the terminal\r\n");
+"71
+[; ;main.c: 71:                     printf("z: Clear the terminal\r\n");
 [e ( _printf :s 1C ]
-"74
-[; ;main.c: 74:                     printf("b: set Baud rate\r\n");
+"72
+[; ;main.c: 72:                     printf("b: set Baud rate\r\n");
 [e ( _printf :s 2C ]
-"75
-[; ;main.c: 75:                     printf("m: create a NULL terminated message with SRC and DEST prefix.\r\n");
+"73
+[; ;main.c: 73:                     printf("m: create a NULL terminated message with SRC and DEST prefix.\r\n");
 [e ( _printf :s 3C ]
-"76
-[; ;main.c: 76:                     printf("s: set source transmit identity\r\n");
+"74
+[; ;main.c: 74:                     printf("s: set source transmit identity\r\n");
 [e ( _printf :s 4C ]
-"77
-[; ;main.c: 77:                     printf("d: set Destination transmit target\r\n");
+"75
+[; ;main.c: 75:                     printf("d: set Destination transmit target\r\n");
 [e ( _printf :s 5C ]
-"78
-[; ;main.c: 78:                     printf("S: Send message using TMR1 ISR\r\n");
+"76
+[; ;main.c: 76:                     printf("S: Send message using TMR1 ISR\r\n");
 [e ( _printf :s 6C ]
-"80
-[; ;main.c: 80:                     printf("M: Monitor all IR traffic.\r\n");
+"78
+[; ;main.c: 78:                     printf("M: Monitor all IR traffic.\r\n");
 {
 [e :U 841 ]
 {
-"82
-[; ;main.c: 82:                     printf("-------------------------------------------------\r\n");
+"80
+[; ;main.c: 80:                     printf("-------------------------------------------------\r\n");
 [e $ ! != -> ( _EUSART1_is_rx_ready ..  `i -> 0 `i 844  ]
 {
-"83
-[; ;main.c: 83:                     break;
+"81
+[; ;main.c: 81:                     break;
 [e = _cmd -> ( _EUSART1_Read ..  `uc ]
-"84
-[; ;main.c: 84: 
+"82
+[; ;main.c: 82: 
 [e $U 846  ]
 {
-"89
-[; ;main.c: 89:                     printf("o:	ok\r\n");
+"87
+[; ;main.c: 87:                     printf("o:	ok\r\n");
 [e :U 847 ]
-"90
-[; ;main.c: 90:                     break;
+"88
+[; ;main.c: 88:                     break;
 [e ( _printf :s 7C ]
+"89
+[; ;main.c: 89: 
+[e ( _printf :s 8C ]
+"90
+[; ;main.c: 90: 
+[e ( _printf , (. :s 9C -> _PR2 `i ]
 "91
 [; ;main.c: 91: 
-[e ( _printf :s 8C ]
+[e ( _printf :s 10C ]
 "92
 [; ;main.c: 92: 
-[e ( _printf , (. :s 9C -> _PR2 `i ]
-"93
-[; ;main.c: 93: 
-[e ( _printf :s 10C ]
-"94
-[; ;main.c: 94: 
 [e ( _printf :s 11C ]
-"95
-[; ;main.c: 95:                 case 'Z':
+"93
+[; ;main.c: 93:                 case 'Z':
 [e ( _printf :s 12C ]
-"96
-[; ;main.c: 96:                     for (i = 0; i < 40; i++) printf("\n");
+"94
+[; ;main.c: 94:                     for (i = 0; i < 40; i++) printf("\n");
 [e ( _printf :s 13C ]
-"97
-[; ;main.c: 97:                     __asm("reset");
+"95
+[; ;main.c: 95:                     __asm("reset");
 [e ( _printf :s 14C ]
-"98
-[; ;main.c: 98:                     break;
+"96
+[; ;main.c: 96:                     break;
 [e ( _printf :s 15C ]
+"97
+[; ;main.c: 97: 
+[e ( _printf :s 16C ]
+"98
+[; ;main.c: 98: 
+[e ( _printf :s 17C ]
 "99
 [; ;main.c: 99: 
-[e ( _printf :s 16C ]
+[e ( _printf :s 18C ]
 "100
 [; ;main.c: 100: 
-[e ( _printf :s 17C ]
-"101
-[; ;main.c: 101: 
-[e ( _printf :s 18C ]
-"102
-[; ;main.c: 102: 
 [e ( _printf :s 19C ]
-"103
-[; ;main.c: 103:                 case 'z':
+"101
+[; ;main.c: 101:                 case 'z':
 [e ( _printf :s 20C ]
-"104
-[; ;main.c: 104:                     for (i = 0; i < 40; i++) printf("\n");
+"102
+[; ;main.c: 102:                     for (i = 0; i < 40; i++) printf("\n");
 [e ( _printf :s 21C ]
-"105
-[; ;main.c: 105:                     break;
+"103
+[; ;main.c: 103:                     break;
 [e ( _printf :s 22C ]
-"106
-[; ;main.c: 106: 
+"104
+[; ;main.c: 104: 
 [e ( _printf :s 23C ]
-"107
-[; ;main.c: 107: 
+"105
+[; ;main.c: 105: 
 [e $U 845  ]
+"110
+[; ;main.c: 110: 
+[e :U 848 ]
+"111
+[; ;main.c: 111: 
+[e ( _printf :s 24C ]
 "112
 [; ;main.c: 112: 
-[e :U 848 ]
-"113
-[; ;main.c: 113: 
-[e ( _printf :s 24C ]
-"114
-[; ;main.c: 114: 
 [e $U 845  ]
-"119
-[; ;main.c: 119:                     printf("Enter a message, hit return when done.\r\n");
+"117
+[; ;main.c: 117:                     printf("Enter a message, hit return when done.\r\n");
 [e :U 849 ]
-"120
-[; ;main.c: 120:                     printf(">");
+"118
+[; ;main.c: 118:                     printf(">");
 {
 [e = _i -> -> 0 `i `uc ]
 [e $ < -> _i `i -> 40 `i 850  ]
@@ -1071,17 +1062,17 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ < -> _i `i -> 40 `i 850  ]
 [e :U 851 ]
 }
-"121
-[; ;main.c: 121: 
+"119
+[; ;main.c: 119: 
 [; <" reset ;# ">
-"122
-[; ;main.c: 122: 
+"120
+[; ;main.c: 120: 
 [e $U 845  ]
-"127
-[; ;main.c: 127:                         printf("%c", transmitIRBuffer[ind]);
+"125
+[; ;main.c: 125:                         printf("%c", transmitIRBuffer[ind]);
 [e :U 853 ]
-"128
-[; ;main.c: 128:                         if (transmitIRBuffer[ind] == '\r') {
+"126
+[; ;main.c: 126:                         if (transmitIRBuffer[ind] == '\r') {
 {
 [e = _i -> -> 0 `i `uc ]
 [e $ < -> _i `i -> 40 `i 854  ]
@@ -1092,241 +1083,257 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ < -> _i `i -> 40 `i 854  ]
 [e :U 855 ]
 }
-"129
-[; ;main.c: 129:                             cksum -= '\r';
+"127
+[; ;main.c: 127:                             cksum -= '\r';
 [e $U 845  ]
-"134
-[; ;main.c: 134:                     transmitIRBuffer[ind + 1] = '\0';
+"132
+[; ;main.c: 132:                     transmitIRBuffer[ind + 1] = '\0';
 [e :U 857 ]
-"135
-[; ;main.c: 135:                     transmitIRBuffer[ind + 2] = cksum;
+"133
+[; ;main.c: 133:                     transmitIRBuffer[ind + 2] = cksum;
 [e $U 845  ]
-"140
-[; ;main.c: 140:                     ind = 2;
+"138
+[; ;main.c: 138:                     ind = 2;
 [e :U 858 ]
-"141
-[; ;main.c: 141:                     printf("\tMessage: ");
+"139
+[; ;main.c: 139:                     printf("\tMessage: ");
 {
-"142
-[; ;main.c: 142:                     for(;;) {
+"140
+[; ;main.c: 140:                     for(;;) {
 [v _ind `uc ~T0 @X0 1 a ]
 [e = _ind -> -> 0 `i `uc ]
 [v _cksum `uc ~T0 @X0 1 a ]
 [e = _cksum -> -> 0 `i `uc ]
-"143
-[; ;main.c: 143:                         if (transmitIRBuffer[ind] == '\0'){
+"141
+[; ;main.c: 141:                         if (transmitIRBuffer[ind] == '\0'){
 [e ( _printf :s 27C ]
-"144
-[; ;main.c: 144:                             printf("\r\n");
+"142
+[; ;main.c: 142:                             printf("\r\n");
 [e ( _printf :s 28C ]
-"147
-[; ;main.c: 147:                         }
+"145
+[; ;main.c: 145:                         }
 [e $U 859  ]
 [e :U 860 ]
 [e :U 859 ]
 [e $ != -> ( _EUSART1_is_rx_ready ..  `i -> 0 `i 860  ]
 [e :U 861 ]
-"148
-[; ;main.c: 148:                         printf("%c", transmitIRBuffer[ind]);
+"146
+[; ;main.c: 146:                         printf("%c", transmitIRBuffer[ind]);
 {
 [e = _ind -> -> 2 `i `uc ]
 [e $ < -> _ind `i - -> 32 `i -> 2 `i 862  ]
 [e $U 863  ]
 [e :U 862 ]
 {
-"149
-[; ;main.c: 149:                         ind++;
+"147
+[; ;main.c: 147:                         ind++;
 [e = *U + &U _transmitIRBuffer * -> _ind `ux -> -> # *U &U _transmitIRBuffer `ui `ux -> ( _EUSART1_Read ..  `uc ]
-"150
-[; ;main.c: 150:                     }
+"148
+[; ;main.c: 148:                     }
 [e =+ _cksum -> *U + &U _transmitIRBuffer * -> _ind `ux -> -> # *U &U _transmitIRBuffer `ui `ux `uc ]
-"151
-[; ;main.c: 151:                     printf("\tchecksum: %d\r\n", transmitIRBuffer[ind]);
+"149
+[; ;main.c: 149:                     printf("\tchecksum: %d\r\n", transmitIRBuffer[ind]);
 [e ( _printf , (. :s 29C -> *U + &U _transmitIRBuffer * -> _ind `ux -> -> # *U &U _transmitIRBuffer `ui `ux `i ]
-"152
-[; ;main.c: 152:                     printf("\tSRC: %d\r\n", transmitIRBuffer[0]);
+"150
+[; ;main.c: 150:                     printf("\tSRC: %d\r\n", transmitIRBuffer[0]);
 [e $ ! == -> *U + &U _transmitIRBuffer * -> _ind `ux -> -> # *U &U _transmitIRBuffer `ui `ux `ui -> 13 `ui 865  ]
 {
-"153
-[; ;main.c: 153:                     printf("\tDES: %d\r\n", transmitIRBuffer[1]);
+"151
+[; ;main.c: 151:                     printf("\tDES: %d\r\n", transmitIRBuffer[1]);
 [e =- _cksum -> -> 13 `ui `uc ]
-"154
-[; ;main.c: 154:                     break;
+"152
+[; ;main.c: 152:                     break;
 [e ( _printf :s 30C ]
-"155
-[; ;main.c: 155:                 }
+"153
+[; ;main.c: 153:                 }
 [e $U 863  ]
-"156
-[; ;main.c: 156: 
+"154
+[; ;main.c: 154: 
 }
 [e :U 865 ]
-"157
-[; ;main.c: 157: 
+"155
+[; ;main.c: 155: 
 }
 [e ++ _ind -> -> 1 `i `uc ]
 [e $ < -> _ind `i - -> 32 `i -> 2 `i 862  ]
 [e :U 863 ]
 }
-"158
-[; ;main.c: 158: 
+"156
+[; ;main.c: 156: 
 [e = *U + &U _transmitIRBuffer * -> -> + -> _ind `i -> 1 `i `ui `ux -> -> # *U &U _transmitIRBuffer `ui `ux -> -> 0 `ui `uc ]
-"159
-[; ;main.c: 159: 
+"157
+[; ;main.c: 157: 
 [e = *U + &U _transmitIRBuffer * -> -> + -> _ind `i -> 2 `i `ui `ux -> -> # *U &U _transmitIRBuffer `ui `ux -> _cksum `uc ]
-"164
-[; ;main.c: 164:                     break;
+"162
+[; ;main.c: 162:                     break;
 [e = _ind -> -> 2 `i `uc ]
-"165
-[; ;main.c: 165: 
+"163
+[; ;main.c: 163: 
 [e ( _printf :s 31C ]
-"166
-[; ;main.c: 166: 
+"164
+[; ;main.c: 164: 
 {
 [e :U 866 ]
 {
-"167
-[; ;main.c: 167: 
+"165
+[; ;main.c: 165: 
 [e $ ! == -> *U + &U _transmitIRBuffer * -> _ind `ux -> -> # *U &U _transmitIRBuffer `ui `ux `ui -> 0 `ui 869  ]
 {
-"168
-[; ;main.c: 168: 
+"166
+[; ;main.c: 166: 
 [e ( _printf :s 32C ]
-"169
-[; ;main.c: 169:                 case 'd':
+"167
+[; ;main.c: 167:                 case 'd':
 [e ++ _ind -> -> 1 `i `uc ]
-"170
-[; ;main.c: 170:                     break;
+"168
+[; ;main.c: 168:                     printf("Enter destination address: ");
 [e $U 867  ]
-"171
-[; ;main.c: 171: 
+"169
+[; ;main.c: 169:                     transmitIRBuffer[1] = userEnter8bit();
 }
 [e :U 869 ]
+"170
+[; ;main.c: 170:                     printf("DES: %d\r\n", transmitIRBuffer[1]);
+[e ( _printf , (. :s 33C -> *U + &U _transmitIRBuffer * -> _ind `ux -> -> # *U &U _transmitIRBuffer `ui `ux `i ]
+"171
+[; ;main.c: 171:                     break;
+[e ++ _ind -> -> 1 `i `uc ]
 "172
 [; ;main.c: 172: 
-[e ( _printf , (. :s 33C -> *U + &U _transmitIRBuffer * -> _ind `ux -> -> # *U &U _transmitIRBuffer `ui `ux `i ]
-"173
-[; ;main.c: 173: 
-[e ++ _ind -> -> 1 `i `uc ]
-"174
-[; ;main.c: 174: 
 }
 [e $U 866  ]
 [e :U 867 ]
 }
-"175
-[; ;main.c: 175:                 case 'S':
+"173
+[; ;main.c: 173: 
 [e ( _printf , (. :s 34C -> *U + &U _transmitIRBuffer * -> _ind `ux -> -> # *U &U _transmitIRBuffer `ui `ux `i ]
-"176
-[; ;main.c: 176: 
+"174
+[; ;main.c: 174: 
 [e ( _printf , (. :s 35C -> *U + &U _transmitIRBuffer * -> -> -> 0 `i `ui `ux -> -> # *U &U _transmitIRBuffer `ui `ux `i ]
-"177
-[; ;main.c: 177:                     newCharacterToSend = 1;
+"175
+[; ;main.c: 175: 
 [e ( _printf , (. :s 36C -> *U + &U _transmitIRBuffer * -> -> -> 1 `i `ui `ux -> -> # *U &U _transmitIRBuffer `ui `ux `i ]
-"178
-[; ;main.c: 178:                     printf("just sent %c    %x\r\n", letter, letter);
+"176
+[; ;main.c: 176:                 case 'S':
 [e $U 845  ]
-"179
-[; ;main.c: 179:                     letter += 1;
+"177
+[; ;main.c: 177:                     transmitStart = 1;
 }
+"182
+[; ;main.c: 182: 
+[e :U 870 ]
+"183
+[; ;main.c: 183: 
+[e ( _printf :s 37C ]
 "184
 [; ;main.c: 184: 
-[e :U 870 ]
+[e = *U + &U _transmitIRBuffer * -> -> -> 0 `i `ui `ux -> -> # *U &U _transmitIRBuffer `ui `ux -> ( _userEnter8bit ..  `uc ]
 "185
 [; ;main.c: 185:                 case 'R':
-[e ( _printf :s 37C ]
-"186
-[; ;main.c: 186:                     if (PIR3bits.RC2IF == 1)
-[e = *U + &U _transmitIRBuffer * -> -> -> 0 `i `ui `ux -> -> # *U &U _transmitIRBuffer `ui `ux -> ( _userEnter8bit ..  `uc ]
-"187
-[; ;main.c: 187:                         printf("Just read in %c from EUSART2\r\n", EUSART2_Read());
 [e ( _printf , (. :s 38C -> *U + &U _transmitIRBuffer * -> -> -> 0 `i `ui `ux -> -> # *U &U _transmitIRBuffer `ui `ux `i ]
-"188
-[; ;main.c: 188:                     else
+"186
+[; ;main.c: 186:                     if (PIR3bits.RC2IF == 1);
 [e $U 845  ]
+"191
+[; ;main.c: 191: 
+[e :U 871 ]
+"192
+[; ;main.c: 192: 
+[e ( _printf :s 39C ]
 "193
 [; ;main.c: 193: 
-[e :U 871 ]
+[e = *U + &U _transmitIRBuffer * -> -> -> 1 `i `ui `ux -> -> # *U &U _transmitIRBuffer `ui `ux -> ( _userEnter8bit ..  `uc ]
 "194
-[; ;main.c: 194: 
+[; ;main.c: 194:                 case 'M':
+[e ( _printf , (. :s 40C -> *U + &U _transmitIRBuffer * -> -> -> 1 `i `ui `ux -> -> # *U &U _transmitIRBuffer `ui `ux `i ]
+"195
+[; ;main.c: 195: 
 [e $U 845  ]
-"199
-[; ;main.c: 199: 
+"200
+[; ;main.c: 200:                     if (cmd == 'x');
 [e :U 872 ]
 "201
 [; ;main.c: 201: 
-[e = _newCharacterToSend -> -> 1 `i `uc ]
+[e = _transmitStart -> -> 1 `i `uc ]
 "202
-[; ;main.c: 202: 
-[e ( _printf , , (. :s 39C -> _letter `i -> _letter `i ]
+[; ;main.c: 202:                     break;
+[e $U 873  ]
+[e :U 874 ]
+[e :U 873 ]
+[e $ != -> _transmitBusy `i -> 0 `i 874  ]
+[e :U 875 ]
 "203
 [; ;main.c: 203: 
-[e =+ _letter -> -> 1 `i `uc ]
+[e ( _printf :s 41C ]
 "204
 [; ;main.c: 204: 
 [e $U 845  ]
 "209
-[; ;main.c: 209:                     printf("Just reset EUSART2\r\n");
-[e :U 873 ]
+[; ;main.c: 209:                     RCSTA2bits.CREN = 0;
+[e :U 876 ]
 "210
-[; ;main.c: 210:                     break;
-[e $ ! == -> . . _PIR3bits 0 5 `i -> 1 `i 874  ]
+[; ;main.c: 210:                     RCSTA2bits.CREN = 1;
+[e $ ! == -> . . _PIR3bits 0 5 `i -> 1 `i 877  ]
+[e $U 878  ]
 "211
-[; ;main.c: 211: 
-[e ( _printf , (. :s 40C -> ( _EUSART2_Read ..  `i ]
-[e $U 875  ]
+[; ;main.c: 211:                     printf("Just reset EUSART2\r\n");
+[e :U 877 ]
 "212
-[; ;main.c: 212: 
-[e :U 874 ]
+[; ;main.c: 212:                     break;
+[e ( _printf :s 42C ]
+[e :U 878 ]
 "213
 [; ;main.c: 213: 
-[e ( _printf :s 41C ]
-[e :U 875 ]
-"214
-[; ;main.c: 214: 
 [e $U 845  ]
-"219
-[; ;main.c: 219: 
-[e :U 876 ]
-"220
-[; ;main.c: 220:             }
-[e :U 877 ]
-"221
-[; ;main.c: 221:         }
-[e $ ! == -> _cmd `ui -> 88 `ui 878  ]
-[e :U 878 ]
-"222
-[; ;main.c: 222:     }
-[e $ ! == -> _cmd `ui -> 120 `ui 879  ]
+"218
+[; ;main.c: 218:                 default:
 [e :U 879 ]
-"224
-[; ;main.c: 224: 
-[e $U 845  ]
-"230
-[; ;main.c: 230: 
+"220
+[; ;main.c: 220:                     break;
+[e ( _decodeIntoASCII (1 &U _transmitIRBuffer ]
+"221
+[; ;main.c: 221: 
 [e :U 880 ]
-"231
-[; ;main.c: 231: 
-[e = . . _RCSTA2bits 0 4 -> -> 0 `i `uc ]
+"222
+[; ;main.c: 222:             }
+[e :U 881 ]
+"223
+[; ;main.c: 223:         }
+[e $ ! == -> _cmd `ui -> 88 `ui 882  ]
+[e :U 882 ]
+"224
+[; ;main.c: 224:     }
+[e $ ! == -> _cmd `ui -> 120 `ui 883  ]
+[e :U 883 ]
+"226
+[; ;main.c: 226: 
+[e $U 845  ]
 "232
-[; ;main.c: 232: void myTMR1ISR(void) {
-[e = . . _RCSTA2bits 0 4 -> -> 1 `i `uc ]
+[; ;main.c: 232: 
+[e :U 884 ]
 "233
 [; ;main.c: 233: 
-[e ( _printf :s 42C ]
+[e = . . _RCSTA2bits 0 4 -> -> 0 `i `uc ]
 "234
-[; ;main.c: 234:     static myTXstates_t tmr1ISRstate = TX_IDLE;
+[; ;main.c: 234: void myTMR1ISR(void) {
+[e = . . _RCSTA2bits 0 4 -> -> 1 `i `uc ]
+"235
+[; ;main.c: 235: 
+[e ( _printf :s 43C ]
+"236
+[; ;main.c: 236:     static myTXstates_t tmr1ISRstate = TX_IDLE;
 [e $U 845  ]
-"240
-[; ;main.c: 240: 
-[e :U 881 ]
-"241
-[; ;main.c: 241: 
-[e ( _printf , (. :s 43C -> _cmd `i ]
 "242
-[; ;main.c: 242: 
-[e $U 845  ]
+[; ;main.c: 242:     if (transmitStart == 1) {
+[e :U 885 ]
+"243
+[; ;main.c: 243: 
+[e ( _printf , (. :s 44C -> _cmd `i ]
 "244
-[; ;main.c: 244:             case TX_IDLE:
+[; ;main.c: 244:         switch (tmr1ISRstate) {
+[e $U 845  ]
+"246
+[; ;main.c: 246: 
 }
 [e $U 845  ]
 [e :U 846 ]
@@ -1339,234 +1346,358 @@ Version 4.0 HI-TECH Software Intermediate Code
  , $ -> -> 115 `ui `i 870
  , $ -> -> 100 `ui `i 871
  , $ -> -> 83 `ui `i 872
- , $ -> -> 82 `ui `i 873
- , $ -> -> 88 `ui `i 876
- , $ -> -> 120 `ui `i 877
- , $ -> -> 114 `ui `i 880
- 881 ]
+ , $ -> -> 82 `ui `i 876
+ , $ -> -> 77 `ui `i 879
+ , $ -> -> 88 `ui `i 880
+ , $ -> -> 120 `ui `i 881
+ , $ -> -> 114 `ui `i 884
+ 885 ]
 [e :U 845 ]
-"245
-[; ;main.c: 245:                 EPWM2_LoadDutyValue(25);
+"247
+[; ;main.c: 247: 
 }
 [e :U 844 ]
-"246
-[; ;main.c: 246:                 tmr1ISRstate = TX_DATA_BITS;
+"248
+[; ;main.c: 248: 
 }
 [e $U 841  ]
 [e :U 842 ]
 }
-"247
-[; ;main.c: 247:                 mask = 0b00000001;
+"249
+[; ;main.c: 249:             case TX_IDLE:
 [e :UE 835 ]
 }
-"256
-[; ;main.c: 256:                     tmr1ISRstate = TX_IDLE;
+"258
+[; ;main.c: 258:                 tmr1ISRstate = TX_DATA_BITS;
 [v _myTMR1ISR `(v ~T0 @X0 1 ef ]
 {
 [e :U _myTMR1ISR ]
 [f ]
-"258
-[; ;main.c: 258:                     newCharacterToSend = 0;
-[v F6194 `E6189 ~T0 @X0 1 s tmr1ISRstate ]
+"260
+[; ;main.c: 260: 
+[v F6194 `E6187 ~T0 @X0 1 s tmr1ISRstate ]
 [i F6194
-. `E6189 0
+. `E6187 0
 ]
-"259
-[; ;main.c: 259:                 } else {
+"261
+[; ;main.c: 261: 
 [v F6195 `uc ~T0 @X0 1 s mask ]
 [i F6195
 -> -> 1 `i `uc
 ]
-"261
-[; ;main.c: 261:                     else EPWM2_LoadDutyValue(25);
-[e $ ! == -> _newCharacterToSend `i -> 1 `i 883  ]
-{
+"262
+[; ;main.c: 262: 
+[v F6196 `uc ~T0 @X0 1 s transmitIndex ]
+[i F6196
+-> -> 0 `i `uc
+]
 "263
-[; ;main.c: 263: 
-[e $U 885  ]
+[; ;main.c: 263:             case TX_DATA_BITS:
+[v F6197 `uc ~T0 @X0 1 s letter ]
+"264
+[; ;main.c: 264:                 if (mask == 0) {
+[v F6198 `a ~T0 @X0 1 s checkSumSent ]
+[i F6198
+-> -> 0 `i `a
+]
+"266
+[; ;main.c: 266:                     EPWM2_LoadDutyValue(0);
+[e $ ! == -> _transmitStart `i -> 1 `i 887  ]
 {
 "268
-[; ;main.c: 268: 
-[e :U 886 ]
-"269
-[; ;main.c: 269: 
-[e ( _EPWM2_LoadDutyValue (1 -> -> 25 `i `us ]
-"270
-[; ;main.c: 270:             default:
-[e = F6194 . `E6189 1 ]
-"271
-[; ;main.c: 271:                 tmr1ISRstate = TX_IDLE;
-[e = F6195 -> -> 1 `i `uc ]
-"272
-[; ;main.c: 272:                 break;
-[e $U 884  ]
-"277
-[; ;main.c: 277:     PIR1bits.TMR1IF = 0;
-[e :U 887 ]
-"279
-[; ;main.c: 279: 
-[e $ ! == -> F6195 `i -> 0 `i 888  ]
-{
-"280
-[; ;main.c: 280: 
-[e = F6194 . `E6189 0 ]
-"281
-[; ;main.c: 281: 
-[e ( _EPWM2_LoadDutyValue (1 -> -> 0 `i `us ]
-"282
-[; ;main.c: 282: 
-[e = _newCharacterToSend -> -> 0 `i `uc ]
-"283
-[; ;main.c: 283: uint8_t userEnter8bit() {
-}
+[; ;main.c: 268:                     if ((letter & mask) != 0) EPWM2_LoadDutyValue(0);
 [e $U 889  ]
-[e :U 888 ]
 {
-"284
-[; ;main.c: 284:     uint8_t num = 0;
-[e $ ! != & -> _letter `i -> F6195 `i -> 0 `i 890  ]
-[e ( _EPWM2_LoadDutyValue (1 -> -> 0 `i `us ]
-[e $U 891  ]
-"285
-[; ;main.c: 285:     for(uint8_t i = 0; i < 3; ++i) {
+"273
+[; ;main.c: 273:             case TX_STOP_BIT:
 [e :U 890 ]
-[e ( _EPWM2_LoadDutyValue (1 -> -> 25 `i `us ]
+"274
+[; ;main.c: 274:                 if (checkSumSent == 1) {
+[e = _transmitBusy -> -> 1 `i `uc ]
+"275
+[; ;main.c: 275:                     tmr1ISRstate = TX_IDLE;
+[e = F6198 -> -> 0 `i `a ]
+"276
+[; ;main.c: 276:                     transmitBusy = 0;
+[e = F6196 -> -> 0 `i `uc ]
+"277
+[; ;main.c: 277:                     transmitStart = 0;
+[e = F6194 . `E6187 1 ]
+"278
+[; ;main.c: 278:                     break;
+[e $U 888  ]
+"279
+[; ;main.c: 279:                 }
 [e :U 891 ]
-"286
-[; ;main.c: 286:         while(!(EUSART1_is_rx_ready()));
-}
-[e :U 889 ]
-"288
-[; ;main.c: 288:         if (cmd == '\r') break;
-[e = F6195 -> << -> F6195 `i -> 1 `i `uc ]
-"289
-[; ;main.c: 289: 
-[e $U 884  ]
-"294
-[; ;main.c: 294:             case 0:
+"280
+[; ;main.c: 280:                 else if (letter == '\0') {
+[e ( _EPWM2_LoadDutyValue (1 -> -> 25 `i `us ]
+"281
+[; ;main.c: 281:                     checkSumSent = 1;
+[e = F6195 -> -> 1 `i `uc ]
+"282
+[; ;main.c: 282:                 }
+[e = F6194 . `E6187 2 ]
+"283
+[; ;main.c: 283:                 tmr1ISRstate = TX_START_BIT;
+[e = F6197 *U + &U _transmitIRBuffer * -> F6196 `ux -> -> # *U &U _transmitIRBuffer `ui `ux ]
+"287
+[; ;main.c: 287: 
 [e :U 892 ]
+"288
+[; ;main.c: 288:             default:
+[e $ ! == -> F6195 `i -> 0 `i 893  ]
+{
+"289
+[; ;main.c: 289:                 tmr1ISRstate = TX_IDLE;
+[e = F6194 . `E6187 3 ]
+"290
+[; ;main.c: 290:                 break;
+[e ( _EPWM2_LoadDutyValue (1 -> -> 0 `i `us ]
+"291
+[; ;main.c: 291:         }
+}
+[e $U 894  ]
+[e :U 893 ]
+{
+"292
+[; ;main.c: 292:     }
+[e $ ! != & -> F6197 `i -> F6195 `i -> 0 `i 895  ]
+[e ( _EPWM2_LoadDutyValue (1 -> -> 0 `i `us ]
+[e $U 896  ]
+"293
+[; ;main.c: 293: 
+[e :U 895 ]
+[e ( _EPWM2_LoadDutyValue (1 -> -> 25 `i `us ]
+[e :U 896 ]
+"294
+[; ;main.c: 294:     TMR1_WriteTimer(0x10000 - bitPeriodInTMR1Counts);
+}
+[e :U 894 ]
 "295
-[; ;main.c: 295:                 num = num + (digit * 10 * 10);
-[e = F6194 . `E6189 0 ]
+[; ;main.c: 295:     PIR1bits.TMR1IF = 0;
+[e = F6195 -> << -> F6195 `i -> 1 `i `uc ]
 "296
-[; ;main.c: 296:                 break;
-[e $U 884  ]
+[; ;main.c: 296: }
+[e $U 888  ]
 "297
-[; ;main.c: 297:             case 1:
-}
-[e $U 884  ]
-[e :U 885 ]
-[e [\ -> F6194 `ui , $ -> . `E6189 0 `ui 886
- , $ -> . `E6189 1 `ui 887
- 892 ]
-[e :U 884 ]
+[; ;main.c: 297: 
+[e :U 897 ]
 "298
-[; ;main.c: 298:                 num = num + (digit * 10);
-}
-[e :U 883 ]
+[; ;main.c: 298: 
+[e $ ! == -> F6198 `i -> 1 `i 898  ]
+{
+"299
+[; ;main.c: 299: 
+[e = F6194 . `E6187 0 ]
 "300
-[; ;main.c: 300:             case 2:
-[e ( _TMR1_WriteTimer (1 -> - -> 65536 `l -> -> 6666 `i `l `us ]
+[; ;main.c: 300: uint8_t userEnter8bit() {
+[e = _transmitBusy -> -> 0 `i `uc ]
 "301
-[; ;main.c: 301:                 num = num + digit;
-[e = . . _PIR1bits 0 0 -> -> 0 `i `uc ]
+[; ;main.c: 301:     uint8_t num = 0;
+[e = _transmitStart -> -> 0 `i `uc ]
 "302
-[; ;main.c: 302:                 break;
-[e :UE 882 ]
+[; ;main.c: 302:     char userNum[3] = {0, 0, 0};
+[e $U 888  ]
+"303
+[; ;main.c: 303:     uint8_t i;
 }
+[e $U 899  ]
+"304
+[; ;main.c: 304:     for(i = 0; i < 3; ++i) {
+[e :U 898 ]
+[e $ ! == -> F6197 `ui -> 0 `ui 900  ]
+{
+"305
+[; ;main.c: 305:         while(!(EUSART1_is_rx_ready()));
+[e = F6198 -> -> 1 `i `a ]
+"306
+[; ;main.c: 306:         char cmd = EUSART1_Read();
+}
+[e :U 900 ]
+[e :U 899 ]
 "307
-[; ;main.c: 307: }
+[; ;main.c: 307:         if (cmd == '\r') break;
+[e = F6194 . `E6187 1 ]
+"308
+[; ;main.c: 308:         printf("%c", cmd);
+[e $U 888  ]
+"312
+[; ;main.c: 312:         case 1:
+[e :U 901 ]
+"313
+[; ;main.c: 313:             num = userNum[0] - 48;
+[e = F6194 . `E6187 0 ]
+"314
+[; ;main.c: 314:             break;
+[e $U 888  ]
+"315
+[; ;main.c: 315:         case 2:
+}
+[e $U 888  ]
+[e :U 889 ]
+[e [\ -> F6194 `ui , $ -> . `E6187 0 `ui 890
+ , $ -> . `E6187 1 `ui 891
+ , $ -> . `E6187 2 `ui 892
+ , $ -> . `E6187 3 `ui 897
+ 901 ]
+[e :U 888 ]
+"316
+[; ;main.c: 316:             num = (10*(userNum[0] - 48)) + (userNum[1] - 48);
+}
+[e :U 887 ]
+"318
+[; ;main.c: 318:         default:
+[e ( _TMR1_WriteTimer (1 -> - -> 65536 `l -> _bitPeriodInTMR1Counts `l `us ]
+"319
+[; ;main.c: 319:             num = (100 * (userNum[0] - 48)) + (10*(userNum[1] - 48)) + (userNum[2] - 48);
+[e = . . _PIR1bits 0 0 -> -> 0 `i `uc ]
+"320
+[; ;main.c: 320:             break;
+[e :UE 886 ]
+}
+"324
+[; ;main.c: 324: }
 [v _userEnter8bit `(uc ~T0 @X0 1 ef ]
 {
 [e :U _userEnter8bit ]
 [f ]
-"308
+"325
+[; ;main.c: 325: 
 [v _num `uc ~T0 @X0 1 a ]
 [e = _num -> -> 0 `i `uc ]
-"309
-{
+[v F6201 `uc ~T0 @X0 -> 3 `i s ]
+[i F6201
+:U ..
+"326
+[; ;main.c: 326: void decodeIntoASCII(char msg[]) {
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+..
+]
+[v _userNum `uc ~T0 @X0 -> 3 `i a ]
+[e = _userNum F6201 ]
+"327
+[; ;main.c: 327:     uint8_t i = 0;
 [v _i `uc ~T0 @X0 1 a ]
-[e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 3 `i 894  ]
-[e $U 895  ]
-[e :U 894 ]
+"328
+[; ;main.c: 328:     do {
 {
-"310
-[e $U 897  ]
-[e :U 898 ]
-[e :U 897 ]
-[e $ ! != -> ( _EUSART1_is_rx_ready ..  `i -> 0 `i 898  ]
-[e :U 899 ]
-"311
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 3 `i 903  ]
+[e $U 904  ]
+[e :U 903 ]
+{
+"329
+[; ;main.c: 329:         ++i;
+[e $U 906  ]
+[e :U 907 ]
+[e :U 906 ]
+[e $ ! != -> ( _EUSART1_is_rx_ready ..  `i -> 0 `i 907  ]
+[e :U 908 ]
+"330
+[; ;main.c: 330:         printf("\t%d:", i);
 [v _cmd `uc ~T0 @X0 1 a ]
 [e = _cmd -> ( _EUSART1_Read ..  `uc ]
-"312
-[e $ ! == -> _cmd `ui -> 13 `ui 900  ]
-[e $U 895  ]
-[e :U 900 ]
-"314
-[e ( _printf , (. :s 44C -> _cmd `i ]
-"315
-[v _digit `uc ~T0 @X0 1 a ]
-[e = _digit -> - -> _cmd `i -> 48 `i `uc ]
-"316
-[e ( _printf , (. :s 45C -> _digit `i ]
-"317
-[e $U 902  ]
-{
-"318
-[e :U 903 ]
-"319
-[e = _num -> + -> _num `i * * -> _digit `i -> 10 `i -> 10 `i `uc ]
-"320
-[e $U 901  ]
-"321
-[e :U 904 ]
-"322
-[e = _num -> + -> _num `i * -> _digit `i -> 10 `i `uc ]
-"323
-[e $U 901  ]
-"324
-[e :U 905 ]
-"325
-[e = _num -> + -> _num `i -> _digit `i `uc ]
-"326
-[e $U 901  ]
-"327
-}
-[e $U 901  ]
-[e :U 902 ]
-[e [\ -> _i `i , $ -> 0 `i 903
- , $ -> 1 `i 904
- , $ -> 2 `i 905
- 901 ]
-[e :U 901 ]
-"328
+"331
+[; ;main.c: 331:         printf("\t%h", msg[i]);
+[e $ ! == -> _cmd `ui -> 13 `ui 909  ]
+[e $U 904  ]
+[e :U 909 ]
+"332
+[; ;main.c: 332:         printf("\t%c", msg[i]);
+[e ( _printf , (. :s 45C -> _cmd `i ]
+"333
+[; ;main.c: 333:         printf("\r\n");
+[e = *U + &U _userNum * -> _i `ux -> -> # *U &U _userNum `ui `ux _cmd ]
+"334
+[; ;main.c: 334:     } while (msg[i - 1] != '\0');
 }
 [e =+ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 3 `i 894  ]
-[e :U 895 ]
+[e $ < -> _i `i -> 3 `i 903  ]
+[e :U 904 ]
 }
-"329
+"335
+[; ;main.c: 335: }
+[e $U 911  ]
+{
+"336
+[e :U 912 ]
+"337
+[e = _num -> - -> *U + &U _userNum * -> -> -> 0 `i `ui `ux -> -> # *U &U _userNum `ui `ux `i -> 48 `i `uc ]
+"338
+[e $U 910  ]
+"339
+[e :U 913 ]
+"340
+[e = _num -> + * -> 10 `i - -> *U + &U _userNum * -> -> -> 0 `i `ui `ux -> -> # *U &U _userNum `ui `ux `i -> 48 `i - -> *U + &U _userNum * -> -> -> 1 `i `ui `ux -> -> # *U &U _userNum `ui `ux `i -> 48 `i `uc ]
+"341
+[e $U 910  ]
+"342
+[e :U 914 ]
+"343
+[e = _num -> + + * -> 100 `i - -> *U + &U _userNum * -> -> -> 0 `i `ui `ux -> -> # *U &U _userNum `ui `ux `i -> 48 `i * -> 10 `i - -> *U + &U _userNum * -> -> -> 1 `i `ui `ux -> -> # *U &U _userNum `ui `ux `i -> 48 `i - -> *U + &U _userNum * -> -> -> 2 `i `ui `ux -> -> # *U &U _userNum `ui `ux `i -> 48 `i `uc ]
+"344
+[e $U 910  ]
+"345
+}
+[e $U 910  ]
+[e :U 911 ]
+[e [\ -> _i `i , $ -> 1 `i 912
+ , $ -> 2 `i 913
+ 914 ]
+[e :U 910 ]
+"346
 [e ( _printf :s 46C ]
-"330
+"347
 [e ) _num ]
-[e $UE 893  ]
-"331
-[e :UE 893 ]
+[e $UE 902  ]
+"348
+[e :UE 902 ]
 }
-[p f _printf 13107328 ]
-[a 45C 68 105 103 105 116 58 32 37 100 0 ]
-[a 38C 83 82 67 58 32 37 100 0 ]
+"350
+[v _decodeIntoASCII `(v ~T0 @X0 1 ef1`*uc ]
+{
+[e :U _decodeIntoASCII ]
+[v _msg `*uc ~T0 @X0 1 r1 ]
+[f ]
+"351
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+"352
+[e :U 918 ]
+{
+"353
+[e =+ _i -> -> 1 `i `uc ]
+"354
+[e ( _printf , (. :s 47C -> _i `i ]
+"355
+[e ( _printf , (. :s 48C -> *U + _msg * -> _i `ux -> -> # *U _msg `ui `ux `i ]
+"356
+[e ( _printf , (. :s 49C -> *U + _msg * -> _i `ux -> -> # *U _msg `ui `ux `i ]
+"357
+[e ( _printf :s 50C ]
+"358
+}
+[e $ != -> *U + _msg * -> - -> _i `i -> 1 `i `x -> -> # *U _msg `i `x `ui -> 0 `ui 918  ]
+[e :U 917 ]
+"359
+[e :UE 915 ]
+}
+[p f _printf 8913024 ]
+[a 48C 9 37 104 0 ]
+[a 49C 9 37 99 0 ]
 [a 29C 37 99 0 ]
 [a 33C 37 99 0 ]
-[a 44C 37 99 0 ]
+[a 45C 37 99 0 ]
 [a 28C 62 0 ]
+[a 47C 9 37 100 58 0 ]
 [a 6C 13 10 62 32 0 ]
+[a 39C 69 110 116 101 114 32 100 101 115 116 105 110 97 116 105 111 110 32 97 100 100 114 101 115 115 58 32 0 ]
 [a 37C 69 110 116 101 114 32 115 111 117 114 99 101 32 97 100 100 114 101 115 115 58 32 0 ]
 [a 31C 9 77 101 115 115 97 103 101 58 32 0 ]
 [a 17C 115 58 32 115 101 116 32 115 111 117 114 99 101 32 116 114 97 110 115 109 105 116 32 105 100 101 110 116 105 116 121 13 10 0 ]
-[a 39C 106 117 115 116 32 115 101 110 116 32 37 99 32 32 32 32 37 120 13 10 0 ]
 [a 11C 63 58 32 104 101 108 112 32 109 101 110 117 13 10 0 ]
 [a 18C 100 58 32 115 101 116 32 68 101 115 116 105 110 97 116 105 111 110 32 116 114 97 110 115 109 105 116 32 116 97 114 103 101 116 13 10 0 ]
 [a 5C 73 110 115 116 97 108 108 32 97 32 106 117 109 112 101 114 32 111 118 101 114 32 73 82 95 84 88 32 104 101 97 100 101 114 32 112 105 110 115 13 10 0 ]
@@ -1581,18 +1712,20 @@ Version 4.0 HI-TECH Software Intermediate Code
 [a 8C 50 52 48 48 32 66 97 117 100 13 10 0 ]
 [a 34C 9 99 104 101 99 107 115 117 109 58 32 37 100 13 10 0 ]
 [a 36C 9 68 69 83 58 32 37 100 13 10 0 ]
+[a 40C 68 69 83 58 32 37 100 13 10 0 ]
 [a 35C 9 83 82 67 58 32 37 100 13 10 0 ]
+[a 38C 83 82 67 58 32 37 100 13 10 0 ]
 [a 9C 80 82 50 58 32 37 100 13 10 0 ]
-[a 43C 85 110 107 110 111 119 110 32 107 101 121 32 37 99 13 10 0 ]
+[a 44C 85 110 107 110 111 119 110 32 107 101 121 32 37 99 13 10 0 ]
 [a 19C 83 58 32 83 101 110 100 32 109 101 115 115 97 103 101 32 117 115 105 110 103 32 84 77 82 49 32 73 83 82 13 10 0 ]
 [a 1C 76 97 98 32 55 13 10 0 ]
 [a 4C 73 110 115 116 97 108 108 32 97 32 106 117 109 112 101 114 32 119 105 114 101 32 102 114 111 109 32 82 67 48 32 116 111 32 82 66 55 32 79 78 76 89 32 65 70 84 69 82 32 117 110 112 108 117 103 103 105 110 103 32 80 73 67 75 105 116 51 13 10 0 ]
-[a 42C 74 117 115 116 32 114 101 115 101 116 32 69 85 83 65 82 84 50 13 10 0 ]
-[a 41C 78 111 116 104 105 110 103 32 114 101 99 101 105 118 101 100 32 102 114 111 109 32 69 85 83 65 82 84 50 13 10 0 ]
-[a 40C 74 117 115 116 32 114 101 97 100 32 105 110 32 37 99 32 102 114 111 109 32 69 85 83 65 82 84 50 13 10 0 ]
+[a 43C 74 117 115 116 32 114 101 115 101 116 32 69 85 83 65 82 84 50 13 10 0 ]
+[a 42C 78 111 116 104 105 110 103 32 114 101 99 101 105 118 101 100 32 102 114 111 109 32 69 85 83 65 82 84 50 13 10 0 ]
 [a 16C 109 58 32 99 114 101 97 116 101 32 97 32 78 85 76 76 32 116 101 114 109 105 110 97 116 101 100 32 109 101 115 115 97 103 101 32 119 105 116 104 32 83 82 67 32 97 110 100 32 68 69 83 84 32 112 114 101 102 105 120 46 13 10 0 ]
 [a 27C 69 110 116 101 114 32 97 32 109 101 115 115 97 103 101 44 32 104 105 116 32 114 101 116 117 114 110 32 119 104 101 110 32 100 111 110 101 46 13 10 0 ]
-[a 22C 120 47 82 58 32 100 101 99 111 100 101 32 116 120 47 82 88 32 109 101 115 115 97 103 101 46 13 10 0 ]
+[a 22C 120 47 88 58 32 100 101 99 111 100 101 32 116 120 47 82 88 32 109 101 115 115 97 103 101 46 13 10 0 ]
+[a 41C 84 114 97 110 115 109 105 116 116 101 100 46 13 10 0 ]
 [a 21C 77 58 32 77 111 110 105 116 111 114 32 97 108 108 32 73 82 32 116 114 97 102 102 105 99 46 13 10 0 ]
 [a 7C 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 13 10 0 ]
 [a 10C 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 45 13 10 0 ]
@@ -1600,5 +1733,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 [a 30C 13 10 0 ]
 [a 32C 13 10 0 ]
 [a 46C 13 10 0 ]
+[a 50C 13 10 0 ]
 [a 25C 10 0 ]
 [a 26C 10 0 ]

@@ -9551,8 +9551,6 @@ char recieveIRBuffer[32];
 uint8_t receiveBusy = 0;
 uint8_t receiveNewMessage = 0;
 
-char letter = '0';
-uint8_t newCharacterToSend = 0;
 
 
 
@@ -9614,7 +9612,7 @@ void main(void) {
                     printf("S: Send message using TMR1 ISR\r\n");
                     printf("R: Receive message using EUSART2 via IR decoder\r\n");
                     printf("M: Monitor all IR traffic.\r\n");
-                    printf("x/R: decode tx/RX message.\r\n");
+                    printf("x/X: decode tx/RX message.\r\n");
                     printf("-------------------------------------------------\r\n");
                     break;
 
@@ -9696,31 +9694,32 @@ void main(void) {
                 case 's':
                     printf("Enter source address: ");
                     transmitIRBuffer[0] = userEnter8bit();
-                    printf("SRC: %d", transmitIRBuffer[0]);
+                    printf("SRC: %d\r\n", transmitIRBuffer[0]);
                     break;
 
 
 
 
                 case 'd':
+                    printf("Enter destination address: ");
+                    transmitIRBuffer[1] = userEnter8bit();
+                    printf("DES: %d\r\n", transmitIRBuffer[1]);
                     break;
 
 
 
 
                 case 'S':
-
-                    newCharacterToSend = 1;
-                    printf("just sent %c    %x\r\n", letter, letter);
-                    letter += 1;
+                    transmitStart = 1;
+                    while(transmitBusy);
+                    printf("Transmitted.\r\n");
                     break;
 
 
 
 
                 case 'R':
-                    if (PIR3bits.RC2IF == 1)
-                        printf("Just read in %c from EUSART2\r\n", EUSART2_Read());
+                    if (PIR3bits.RC2IF == 1);
                     else
                         printf("Nothing received from EUSART2\r\n");
                     break;
@@ -9728,6 +9727,9 @@ void main(void) {
 
 
 
+                case 'M':
+
+                    decodeIntoASCII(transmitIRBuffer);
                 case 'X':
                 case 'x':
                     if (cmd == 'X');
@@ -9759,7 +9761,7 @@ void main(void) {
 }
 
 typedef enum {
-    TX_IDLE, TX_DATA_BITS
+    TX_IDLE, TX_START_BIT, TX_DATA_BITS, TX_STOP_BIT
 } myTXstates_t;
 
 
@@ -9769,8 +9771,11 @@ void myTMR1ISR(void) {
 
     static myTXstates_t tmr1ISRstate = TX_IDLE;
     static uint8_t mask = 0b00000001;
+    static uint8_t transmitIndex = 0;
+    static char letter;
+    static _Bool checkSumSent = 0;
 
-    if (newCharacterToSend == 1) {
+    if (transmitStart == 1) {
 
         switch (tmr1ISRstate) {
 
@@ -9778,28 +9783,41 @@ void myTMR1ISR(void) {
 
 
             case TX_IDLE:
-                EPWM2_LoadDutyValue(25);
-                tmr1ISRstate = TX_DATA_BITS;
-                mask = 0b00000001;
+                transmitBusy = 1;
+                checkSumSent = 0;
+                transmitIndex = 0;
+                tmr1ISRstate = TX_START_BIT;
                 break;
-
+            case TX_START_BIT:
+                EPWM2_LoadDutyValue(25);
+                mask = 0b00000001;
+                tmr1ISRstate = TX_DATA_BITS;
+                letter = transmitIRBuffer[transmitIndex];
 
 
 
             case TX_DATA_BITS:
-
                 if (mask == 0) {
-                    tmr1ISRstate = TX_IDLE;
+                    tmr1ISRstate = TX_STOP_BIT;
                     EPWM2_LoadDutyValue(0);
-                    newCharacterToSend = 0;
                 } else {
                     if ((letter & mask) != 0) EPWM2_LoadDutyValue(0);
                     else EPWM2_LoadDutyValue(25);
                 }
-
                 mask = mask << 1;
                 break;
-
+            case TX_STOP_BIT:
+                if (checkSumSent == 1) {
+                    tmr1ISRstate = TX_IDLE;
+                    transmitBusy = 0;
+                    transmitStart = 0;
+                    break;
+                }
+                else if (letter == '\0') {
+                    checkSumSent = 1;
+                }
+                tmr1ISRstate = TX_START_BIT;
+                break;
 
 
 
@@ -9809,35 +9827,45 @@ void myTMR1ISR(void) {
         }
     }
 
-    TMR1_WriteTimer(0x10000 - 6666);
+    TMR1_WriteTimer(0x10000 - bitPeriodInTMR1Counts);
     PIR1bits.TMR1IF = 0;
 }
 
 
 
-
 uint8_t userEnter8bit() {
     uint8_t num = 0;
-    for(uint8_t i = 0; i < 3; ++i) {
+    char userNum[3] = {0, 0, 0};
+    uint8_t i;
+    for(i = 0; i < 3; ++i) {
         while(!(EUSART1_is_rx_ready()));
         char cmd = EUSART1_Read();
         if (cmd == '\r') break;
-
         printf("%c", cmd);
-        uint8_t digit = cmd - 48;
-        printf("Digit: %d", digit);
-        switch(i){
-            case 0:
-                num = num + (digit * 10 * 10);
-                break;
-            case 1:
-                num = num + (digit * 10);
-                break;
-            case 2:
-                num = num + digit;
-                break;
-        }
+        userNum[i] = cmd;
+    }
+    switch (i) {
+        case 1:
+            num = userNum[0] - 48;
+            break;
+        case 2:
+            num = (10*(userNum[0] - 48)) + (userNum[1] - 48);
+            break;
+        default:
+            num = (100 * (userNum[0] - 48)) + (10*(userNum[1] - 48)) + (userNum[2] - 48);
+            break;
     }
     printf("\r\n");
     return num;
+}
+
+void decodeIntoASCII(char msg[]) {
+    uint8_t i = 0;
+    do {
+        ++i;
+        printf("\t%d:", i);
+        printf("\t%h", msg[i]);
+        printf("\t%c", msg[i]);
+        printf("\r\n");
+    } while (msg[i - 1] != '\0');
 }
